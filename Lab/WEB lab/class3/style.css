@@ -1,0 +1,17 @@
+body {
+    background-color: lightblue;
+    background-image: url("Screenshot\ from\ 2024-03-04\ 15-31-25.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    }
+h1 {
+    background-color: aqua;
+    color: white;
+    text-align: center;
+    }
+p {
+    background-color: aquamarine;
+    font-family: verdana;
+    font-size: 20px;
+    }

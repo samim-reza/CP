@@ -1,0 +1,40 @@
+<html>
+<head>
+  <title>Form Example</title>
+  <style>
+    .hidden-field {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="style3.css">
+
+</head>
+<body>
+
+<form action="#" method="post">
+  <label for="firstName">First Name *</label>
+  <input type="text" id="firstName" name="firstName" required>
+
+  <label for="lastName">Last Name *</label>
+  <input type="text" id="lastName" name="lastName" required>
+
+  <label for="hiddenField">Hidden Field</label>
+  <input type="text" id="hiddenField" name="hiddenField" class="hidden-field">
+
+  <label>Gender</label>
+  <label><input type="radio" name="gender" value="male"> Male</label>
+  <label><input type="radio" name="gender" value="female"> Female</label>
+  <label><input type="radio" name="gender" value="other"> Other</label>
+
+  <label for="department">Department</label>
+  <select id="department" name="department">
+    <option value="it">IT</option>
+    <option value="finance">Finance</option>
+    <option value="marketing">Marketing</option>
+  </select>
+
+  <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
