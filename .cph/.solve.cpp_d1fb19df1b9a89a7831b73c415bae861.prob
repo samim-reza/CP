@@ -1,0 +1,1 @@
+{"name":"Local: solve","url":"/home/samim01/Code/CP/solve.cpp","tests":[{"id":1751380708689,"input":"0","output":"Alice\nBob\nAlice\nAlice\nBob\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/samim01/Code/CP/solve.cpp","group":"local","local":true}
