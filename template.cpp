@@ -195,6 +195,56 @@ using namespace std;
 // }
 //auto [num1, den1] = simplifyFraction(15, 25);
 
+// ll mulmod(ll a, ll b, ll mod) {
+//     ll res = 0;
+//     a %= mod;
+//     while (b) {
+//         if (b & 1) res = (res + a) % mod;
+//         a = (a * 2) % mod;
+//         b >>= 1;
+//     }
+//     return res;
+// }
+
+// ll powmod(ll base, ll exp, ll mod) {
+//     ll res = 1;
+//     base %= mod;
+//     while (exp) {
+//         if (exp & 1) res = mulmod(res, base, mod);
+//         base = mulmod(base, base, mod);
+//         exp >>= 1;
+//     }
+//     return res;
+// }
+
+// bool miller_rabin(ll n, ll a) {
+//     if (n % a == 0) return false;
+//     ll d = n - 1;
+//     while (d % 2 == 0) d >>= 1;
+//     ll x = powmod(a, d, n);
+//     if (x == 1 || x == n-1) return true;
+//     while (d != n - 1) {
+//         x = mulmod(x, x, n);
+//         d <<= 1;
+//         if (x == 1) return false;
+//         if (x == n - 1) return true;
+//     }
+//     return false;
+// }
+
+// bool isPrime(ll n) {
+//     if (n <= 1) return false;
+//     if (n <= 3) return true;
+//     if (n % 2 == 0) return false;
+    
+//     vector<ll> bases = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
+//     for (ll a : bases) {
+//         if (n == a) return true;
+//         if (!miller_rabin(n, a)) return false;
+//     }
+//     return true;
+// }
+
 int main()
 {
     cin.tie(0);

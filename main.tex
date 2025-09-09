@@ -1,0 +1,5058 @@
+\documentclass[10pt,landscape]{article}
+\usepackage[a4paper,landscape,
+  top=1.5cm,
+  bottom=0.5cm,
+  left=1cm,
+  right=.5cm,  
+  headsep=0.2cm,  % ↓ Distance between header and text body
+  footskip=0.1cm  % ↓ Distance between footer and text body
+]{geometry}
+
+\setlength{\headheight}{10pt} % Allocate 15pt of vertical space for the header
+% \setlength{\headsep}{0.4cm}   % Set 0.4cm between header and text
+
+
+% \usepackage[margin=0.5in]{geometry}
+\usepackage{multicol}
+% Add vertical rule between columns
+\setlength{\columnsep}{10pt}         % Space between columns
+\setlength{\columnseprule}{0.3pt}   % Thickness of the vertical line
+
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage{breqn}
+\usepackage{enumitem} % for compact itemize
+\setlength{\jot}{0pt}
+\setlist{
+  labelsep=0pt,
+  topsep=0pt,
+  itemsep=0pt,
+  partopsep=0pt,
+  parsep=0pt
+}
+% Explanation:
+% First value: base text size
+% Second: math text size
+% Third: script size (e.g., subscript)
+% Fourth: scriptscript size (e.g., sub-subscript)
+
+% Reduce spacing around equations
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{courier}
+\pagestyle{fancy}
+
+% \fancyhf{}
+% \chead{Green University of Bangladesh}
+% \lhead{GreenU\_TrippleQ}
+% \rhead{\thepage}
+
+\fancyhf{} % Clear all headers and footers
+
+\lhead{GreenU\_TripleQ} % Left header
+% \chead{\leftmark} % Center header: current section
+
+% \chead{\nouppercase{\rightmark}} % Center header: subsection title
+
+\chead{Green University of Bangladesh}
+\rhead{\thepage} % Right header
+
+\cfoot{} % Footer is empty (you can remove this if unnecessary)
+
+\let\oldsubsection\subsection
+\renewcommand{\subsection}[1]{%
+  \markright{#1}%
+  \oldsubsection{#1}%
+}
+
+
+\usepackage{soul}   % for better underlining
+
+% Tighter spacing
+\titlespacing{\section}{0pt}{0.5em}{0em}
+\titlespacing{\subsection}{0pt}{0.3em}{0em}
+\titlespacing{\subsubsection}{0pt}{0.3em}{0em}
+
+% Optional: consistent formatting
+\usepackage{ulem} % provides \uline
+
+% \titleformat{\section}
+%   {\bfseries\Large}
+%   {(\thesection)}
+%   {0pt}
+%   {\uline}
+\titleformat{\section}
+  {\normalfont\Large\bfseries} % Font styling: Large size, bold
+  {(\thesection)} % Numbering prefix (e.g., “Section”)
+  {5pt} % Space between number and title
+  {\uline} % Code before the title
+% \titleformat{\section}{\bfseries\LARGE}{\thesectionform{#1}}{0em}{\underline}
+% % Define how the section number appears
+% \newcommand{\thesectionform}[1]{(\thesection)}
+
+\titleformat{\subsection}
+    {\bfseries\large}
+    {(\thesubsection)}
+    {4pt}
+    {}
+    
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries} % Normal size
+  {(\thesubsubsection)}
+  {3pt}
+  {}
+
+
+  
+\usepackage{hyperref}   % For linking table of content
+
+
+% \definecolor{codebg}{rgb}{0.95,0.95,0.95}
+% \lstset{
+%   language=C++,
+%   backgroundcolor=\color{codebg},
+%   basicstyle=\footnotesize\ttfamily,
+%   keywordstyle=\color{blue},
+%   commentstyle=\color{gray},
+%   stringstyle=\color{orange},
+%   breaklines=true,
+%   showstringspaces=false,
+%   tabsize=2,
+%   commentstyle=\color{gray},
+% }
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
+\definecolor{commentgray}{rgb}{0.4,0.4,0.4}
+\definecolor{keywordblue}{rgb}{0.0,0.0,0.6}
+\definecolor{stringorange}{rgb}{0.8,0.3,0.0}
+
+\lstset{
+  language=C++,
+  % backgroundcolor=\color{white}, % or use \color{codebg}
+  basicstyle=\color{black}\ttfamily\footnotesize,
+  % keywordstyle=\color{keywordblue}\bfseries,
+  commentstyle=\color{commentgray}\itshape,
+  % stringstyle=\color{stringorange},
+  numberstyle=\tiny\color{gray},
+  % numbers=left,
+  numbersep=3pt,
+  xleftmargin=3pt,
+  frame=top,                 % <-- Only top border
+  frame=bottom,                 % <-- Only top border
+  rulecolor=\color{black},   % Border color
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=1,
+  captionpos=b
+}
+% \lstset{
+%   language=C++,                 % Set language
+%   basicstyle=\ttfamily\footnotesize, % Use monospaced font
+%   keywordstyle=\color{blue},   % Keywords in blue
+%   commentstyle=\color{gray},   % Comments in gray
+%   stringstyle=\color{orange},  % Strings in orange
+%   numbers=left,                % Line numbers on the left
+%   numberstyle=\tiny\color{gray},
+%   stepnumber=1,
+%   breaklines=true,             % Wrap lines
+%   frame=single,                % Frame around code
+%   tabsize=2,
+%   showstringspaces=false
+% }
+
+% \titleformat{\section}{\Large\bfseries}{}{0em}{}
+% \titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+
+\begin{document}
+
+% ==== TITLE PAGE ====
+% \begin{center}
+%   \large {Green University of Bangladesh} \\
+%   \Huge {\textbf{GreenU\_TripplqQ}} \\
+%   \vspace{10mm}
+%   \large{Md. Hosain Rohman Noyon\\
+%   Ismatul Islam Pranto\\
+%   Md DinIslam\\}
+%   \vspace{120mm}
+%   \normalsize \today
+% \end{center}
+
+\vspace*{\fill}
+\thispagestyle{empty}
+\begin{center}
+    \begin{center}
+     \includegraphics[scale=.1]{images/gub_logo.png}\\
+    \end{center}
+  \LARGE{\textbf{Green University of Bangladesh}} \\
+  \vspace{4cm}
+  \Huge{\textbf{GreenU\_NoTeam}} \\
+  \vspace{1cm}
+  \LARGE{
+    Samim Reza\\
+  }
+  \vspace{4cm}
+  \normalsize \today
+\end{center}
+\vspace*{\fill}
+
+
+\newpage
+
+\begin{multicols}{4}
+% ==== TABLE OF CONTENTS ====
+\setcounter{tocdepth}{2}
+\tableofcontents
+% \newpage
+\end{multicols}
+
+
+
+
+
+
+
+
+% Main body
+\begin{multicols}{4}
+
+
+
+\section{Template}
+\begin{lstlisting}
+#include<bits/stdc++.h> 
+using namespace std;
+#define largeInt __int128
+typedef long double ld;
+typedef unsigned long long ull;
+#define MAX LLONG_MAX
+#define MIN LLONG_MIN
+#define MEM(a,x) memset(a,x,sizeof(a))
+#define PI acos(-1)
+double radians = deg* PI / 180.0;
+double sin = sin(angle_radians);
+double cos = cos(angle_radians);
+double tan = tan(angle_radians);
+// Print double
+cout<<fixed<<setprecision(9);
+\end{lstlisting}
+
+\subsection{FastIO}
+\begin{lstlisting}
+ios_base::sync_with_stdio(false);  
+cin.tie(NULL);  cout.tie(NULL);
+\end{lstlisting}
+
+\subsection{File I/O}
+\begin{lstlisting}
+freopen("input.txt", "r", stdin); 
+freopen("output.txt", "w", stdout);
+freopen("error.txt", "w", stderr);
+\end{lstlisting}
+
+\subsection{Run command}
+\begin{lstlisting}
+// [In ./run file]
+g++ \$1.cpp \&\& ./a.out \<input.txt \>output.txt 2\>error.txt
+// In windows replace out to exe
+//cmd: chmod +x run
+//run cmd: ./run fileName
+\end{lstlisting}
+
+
+\section{Bitwise Technique}
+\subsection{Bit operations}
+\begin{lstlisting}
+// Bitset
+bitset<n> x(intVal);
+x[1] = 1; x[2] = 0; // Note: x[0-n] valid
+cout << x << endl; // Output: 00010
+
+// Bit Manipulation
+Getbit:      n & (1LL << i)
+Setbit 0:    n & (~(1LL << i))
+Setbit 1:    n | (1LL << i)
+Clearbit:    n & (~(1LL << i))
+Togglebit:   n ^ (1LL << i)
+Rightmost 1: n & (-n)
+
+// Check if N is power of 2
+if (n && !(n & (n - 1))) 
+    cout << "YES" << endl;
+
+// Clear bits
+ll b = n & (~((1LL << (i + 1)) - 1)); // Clear LSB till ith
+ll c = n & ((1LL << (i + 1)) - 1);    // Clear MSB till ith
+
+cout << (a << 1) << endl; // Multiply
+cout << (a >> 1) << endl; // Divide
+\end{lstlisting}
+
+\subsection{Built-in Functions}
+\begin{lstlisting}
+// Number of leading zeros
+__builtin_clz(x);     // for int
+__builtin_clzll(x);   // for long long
+
+// Number of trailing zeros
+__builtin_ctz(x);
+__builtin_ctzll(x);
+
+// Number of 1-bits
+__builtin_popcount(x);
+__builtin_popcountll(x);
+
+// Parity check (odd number of 1s)
+__builtin_parity(x);
+\end{lstlisting}
+
+\subsection{Bitwise Formulas}
+\begin{lstlisting}
+a + b     = a ^ b + 2 * (a & b)
+a + b     = a | b + a & b
+a ^ b     = a | b - a & b
+n % 2^i   = n & ((1 << i) - 1)
+1^2^3^...^(4k-1) = 0
+\end{lstlisting}
+
+
+\section{STL Cheatsheet}
+
+\subsection{Pairs}
+\begin{lstlisting}
+p1.first; p1.second;
+p1 = {1, 'a'};
+\end{lstlisting}
+
+\subsection{Vectors}
+\begin{lstlisting}
+vector<vector<int>> mtrx(n, vector<int>(m)); // n*m matrix
+v.insert(v.begin() + ind, val);
+v.resize(size, optionalValue);
+v.front(); v.back();
+v.size(); v.empty();
+v.erase(iterator);
+v.begin(), v.end();
+sort(v.begin(), v.end(), greater());
+auto it = find(v.begin(), v.end(), x);
+for (auto &n : v) // loop
+v[ind].first;
+v[ind].second;
+*max_element(all(v));
+\end{lstlisting}
+
+\subsection{Set}
+\subsubsection{Normal Set (Unique, Sorted)}
+\begin{lstlisting}
+set s;
+set<int, greater<int>> s = {3, 2, 1, 4};
+s.count(n); s.find(n);
+s.erase(x); // all
+s.erase(s.find(x)); // one
+s.begin(); s.end();
+*st.begin(); // min
+*st.rbegin(); // max
+s2.insert(s1.begin(), s1.end());
+\end{lstlisting}
+
+\subsubsection{Multiset (Duplicate, Sorted)}
+\begin{lstlisting}
+multiset ms;
+multiset<int, greater> ms;
+\end{lstlisting}
+
+\subsubsection{Unordered Set (Unique, Unsorted)}
+\begin{lstlisting}
+unordered_set s;
+\end{lstlisting}
+
+\subsection{Ordered Set (Access index)}
+\begin{lstlisting}
+#include <ext/pb_ds/assoc_container.hpp> 
+#include <ext/pb_ds/tree_policy.hpp> 
+using namespace __gnu_pbds;
+
+template<class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+//MULTI ORDERED SET: less_equal
+
+//Declaration: 
+ordered_set<int> st;
+
+//To get value(iterator) of that index
+st.find_by_order(index) 
+//To get index(count of values less than val) of that value
+st.order_of_key(val) 
+//To Delete {works if k exist}
+s.erase(s.find_by_order(s.order_of_key(k))); 
+s.erase(s.find(k)); 
+\end{lstlisting}
+
+\subsection{Map (Sorted Key)}
+\begin{lstlisting}
+map<int, int> m;
+m.insert({x, y});
+m[x]; // access or insert
+m.find(x);
+m.lower_bound(x); m.upper_bound(x);
+\end{lstlisting}
+
+\subsection{Upper/Lower Bound}
+\begin{lstlisting}
+index = lower_bound(v.begin(), v.end(), num) - v.begin();
+index = upper_bound(v.begin(), v.end(), num) - v.begin();
+\end{lstlisting}
+
+\subsection{Custom Sort}
+\begin{lstlisting}
+bool pairSort(pair<ll, ll>& a, pair<ll, ll>& b) {
+    if (a.second == b.second) return a.first < b.first;
+    return a.second < b.second;
+}
+vector<vector<int>> v(sz);
+bool sortcol(const vector<int>& v1, const vector<int>& v2) {
+    return v1[0] < v2[0];
+}
+sort(all(v), funcName);
+\end{lstlisting}
+
+\subsection{Stack}
+\begin{lstlisting}
+stack st;
+st.push(x); st.top(); st.pop();
+\end{lstlisting}
+
+\subsection{Queue}
+\begin{lstlisting}
+queue q;
+q.push(x); q.pop();
+q.front(); q.back();
+\end{lstlisting}
+
+\subsection{Priority Queue}
+\begin{lstlisting}
+// Descending (Max-Heap)
+priority_queue pq1;
+// Ascending (Min-Heap)
+priority_queue<int, vector<int>, greater<int>> pq2;
+pq.top()    
+\end{lstlisting}
+
+\subsection{Deque}
+\begin{lstlisting}
+deque dq;
+dq.push_back(10); dq.push_front(20);
+dq.pop_front(); dq.pop_back();
+dq.front(); dq.back(); dq.size();
+dq.clear(); dq.erase(it);
+dq.insert(it, val);
+for (auto it = dq.begin(); it != dq.end(); ++it) cout << *it << " ";
+\end{lstlisting}
+
+
+\subsection{STL Functions}
+\begin{lstlisting}
+//all(v) -> v.begin(), v.end()
+binary_search(all(v), item); // returns 1, 0
+is_sorted(all(v));
+reverse(all(v));
+is_permutation(all(v), bar.begin());
+*min_element(all(vec));
+*max_element(all(vec));
+
+do {
+    perms.push_back(v);
+} while (next_permutation(all(v)));
+
+unique_copy(all(v1), v2.begin());
+\end{lstlisting}
+
+\section{String Utilities}
+\subsection{String Manipulation}
+\begin{lstlisting}
+// Transformation
+transform(S.begin(), S.end(), S.begin(), ::toupper);
+transform(S.begin(), S.end(), S.begin(), ::tolower);
+
+// String to number and back
+int n = stoi(str);
+double d = stod(str);
+string s = to_string(n);
+
+// Substring
+subS = s1.substr(startIdx, length); 
+subS = s1.substr(startIdx);
+
+// Find (O(n*m) complexity)
+if(s.find("hello") != -1  found
+
+// Compare
+s1.compare(s2); // s1 > s2 = 1, s1 < s2 = -1, s1 == s2 = 0
+
+// Replace
+s1.replace(startIdx, length, "Uni");
+s1.replace(s1.find(s2), s2.length(), newString);
+
+// Erase substring
+s.erase(s.begin() + startIdx, s.begin() + endIdx);
+
+\end{lstlisting}
+
+\subsection{Input with Spaces}
+\begin{lstlisting}
+char c; cin >> c;
+string s; getline(cin, s);
+s = c + s;
+
+// Using stringstream
+stringstream ss(s);
+vector<string> v;
+while (getline(ss, s, ' ')) {
+    v.push_back(s);
+}
+\end{lstlisting}
+
+
+%Formulas
+% \section{Important Formulas}
+\section{Geometry}
+\subsection{2D Shapes}
+\subsubsection{Triangle}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \small \textbf{Perimeter and Semiperimeter:}
+  \begin{align*}
+    P &= a + b + c, \quad s = \frac{a + b + c}{2}
+  \end{align*}
+
+  \item \small \textbf{Area using Heron’s formula:}
+  \begin{align*}
+    A = \sqrt{s(s - a)(s - b)(s - c)}
+  \end{align*}
+
+  \item \small \textbf{Area using two sides and the included angle:}
+  \begin{align*}
+    A = \frac{1}{2}ab \sin \theta
+  \end{align*}
+
+  \item \small \textbf{Right triangle:}
+  \begin{align*}
+    A = \frac{1}{2} b h, \quad
+    c^2 = a^2 + b^2 \ \text{[Pythagorean Theorem]}
+  \end{align*}
+
+  \item \small \textbf{Equilateral triangle (side = \( a \)):}
+  \begin{align*}
+    \text{Height} &= \frac{\sqrt{3}}{2}a, \quad
+    A = \frac{\sqrt{3}}{4}a^2
+  \end{align*}
+
+  \item \small \textbf{Isosceles triangle (equal sides = \( a \), base = \( b \)):}
+  \begin{align*}
+    \text{Height} &= \frac{\sqrt{4a^2 - b^2}}{2}, \quad
+    A = \frac{b}{4} \sqrt{4a^2 - b^2}
+  \end{align*}
+
+  \item \small \textbf{Coordinate Geometry Formulas:}
+  \begin{align*}
+    &A = \frac{1}{2} \left| x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2) \right| \\
+    &\text{Centroid} = \left(\frac{x_1 + x_2 + x_3}{3}, \frac{y_1 + y_2 + y_3}{3}\right)
+  \end{align*}
+
+  \item \small \textbf{Triangle Radii:}
+  \begin{align*}
+    \text{Inradius} &= \frac{A}{s}, \quad
+    \text{Circumradius} = \frac{abc}{4A}
+  \end{align*}
+
+  \item \small \textbf{Miscellaneous:}
+  \begin{align*}
+    &\text{Altitude (the perpendicular line segment from a}\\
+        &\quad \quad \quad\text{vertex to the opposite side)} = \frac{2A}{\text{base}} \\
+    &\text{Equilateral triangle side from height } h: \\& \quad \quad \quad \quad a = \frac{2h}{\sqrt{3}} \\
+    &\text{If two sides } x \text{ and angle } 120^\circ: \ \text{3rd side} = \sqrt{3}  x
+  \end{align*}
+\end{itemize}
+
+\subsubsection{Quadrilateral}
+\begin{itemize}[left=0pt, itemsep=0pt]
+
+  \item \small {\textbf{General Quadrilateral:}}
+  \begin{align*}
+    \text{Area} &= 2 \cdot \text{TriangleArea}
+  \end{align*}
+  
+  \item \small {\textbf{Rectangle:}}
+  \begin{align*}
+    \text{Perimeter} &= 2(l + w) ,\quad
+    \text{Length} = \frac{P}{2} - w \\
+    \text{Width} &= \frac{P}{2} - l ,\quad
+    \text{Area} = l \cdot w
+  \end{align*}
+
+  \item \small {\textbf{Parallelogram:}}
+  \begin{align*}
+    &\text{Perimeter} = 2(\text{length} + \text{base}) ,\\
+    &\text{Area} = \text{base} \cdot \text{height}
+  \end{align*}
+
+  \item \small {\textbf{Square:}}
+  \begin{align*}
+    \text{Perimeter} &= 4a ,\quad
+    \text{Area} = a^2 ,\quad
+    \text{Diagonal} = \sqrt{2}a
+  \end{align*}
+
+  \item \small {\textbf{Rhombus:}}
+  \begin{align*}
+    \text{Perimeter} &= 4a ,\quad
+    \text{Area} = \frac{d_1 \cdot d_2}{2}
+  \end{align*}
+
+  \item \small {\textbf{Trapezium:}}
+  \begin{align*}
+    \text{Perimeter} &= a + b + c + d ,\quad
+    \text{Area} = \frac{(a + b) \cdot h}{2}
+  \end{align*}
+
+\end{itemize}
+
+\subsubsection{Circle}
+
+\begin{itemize}[left=0pt, itemsep=0pt]
+
+  \item \small {\textbf{Circle (General Equation):}}
+  \begin{align*}
+  (x - a)^2 + (y - b)^2 = r^2 \ [(a,b)\ center\ point]\\
+    S = x^2 + y^2 + 2gx + 2fy + c = 0 \\
+    \text{Center} = (-g, -f) ,\quad
+    \text{Radius} = \sqrt{g^2 + f^2 - c} \\
+    \text{X part} = 2\sqrt{g^2 - c} ,\quad
+    \text{Y part} = 2\sqrt{f^2 - c}
+  \end{align*}
+  
+  \item \small {\textbf{Circle:}}
+  \begin{align*}
+    \text{Circumference} &= 2\pi r ,\quad
+    \text{Area} = \pi r^2 \\
+    \text{1 Radian} &= \frac{180}{\pi} \text{ degree} \\
+    \text{Sector Area} &= \frac{\theta}{360} \cdot \pi r^2 ,\quad \text{[If } \theta \text{ in degree]} \\
+    \text{Sector Area} &= \frac{1}{2} \cdot r^2 \theta ,\quad \text{[If } \theta \text{ in radian]} \\
+    \text{Arc Length} &= \frac{\theta}{360} \cdot 2\pi r ,\quad \text{[If } \theta \text{ in degree]} \\
+    \text{Arc Length} &= r \theta ,\quad \text{[If } \theta \text{ in radian]}
+  \end{align*}
+\end{itemize}
+
+\subsubsection{Ellipse}
+
+\begin{itemize}[left=0pt, itemsep=0pt]
+
+  \item \small {\textbf{Ellipse:}}
+  \begin{align*}
+    \text{Perimeter (approx)} &= \pi(a + b) , \quad
+    \text{Area} = \pi a b
+  \end{align*}
+
+\end{itemize}
+
+\subsubsection{Hexagon}
+
+\begin{itemize}[left=0pt, itemsep=0pt]
+
+  \item \small {\textbf{Regular Hexagon (6 equal sides):}}
+  \begin{align*}
+    &\text{Perimeter} = 6a ,\\
+    &\text{Area} = 6 \cdot \text{EquilateralTriangleArea} \\
+    & \text{Area (general)} = \frac{na^2 \cot\left(\frac{180}{n}\right)}{4}
+  \end{align*}
+
+\end{itemize}
+
+
+\subsubsection{Polygon}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \small \textbf{Interior and Exterior Angles (for an \( n \)-sided polygon):}
+  \begin{align*}
+    \text{Sum of interior angles} &= (n - 2) \times 180^\circ \\
+    \text{Each interior angle (regular)} &= \frac{(n - 2) \times 180^\circ}{n} \\
+    \text{Each exterior angle (regular)} &= \frac{360^\circ}{n}
+  \end{align*}
+
+  \item \small \textbf{Perimeter:}
+  \begin{align*}
+    \text{Perimeter of a regular polygon} &= n \times s
+  \end{align*}
+
+  \item \small \textbf{Area of a Regular Polygon:}
+  \begin{align*}
+    A &= \frac{n \times s^2}{4 \tan\left(\frac{\pi}{n}\right)} \\
+    A &= \frac{1}{2} \times \text{Perimeter} \times a
+  \end{align*}
+
+  \item \small \textbf{Number of Diagonals:}
+  \begin{align*}
+    D &= \frac{n(n - 3)}{2}
+  \end{align*}
+
+  \item \small \textbf{Apothem:} (The perpendicular distance from the center to a side in a regular polygon)
+    \begin{align*}
+      a &= \frac{s}{2 \tan\left(\frac{\pi}{n}\right)} \quad \text{[using side length]} \\
+      a &= R \cos\left(\frac{\pi}{n}\right) \quad \text{[using radius]}
+    \end{align*}
+\end{itemize}
+
+
+
+\subsection{3D Shapes}
+
+\begin{itemize}[left=0pt, itemsep=0pt]
+
+  \item \small {\textbf{Cuboid (Rectangle box):}} 
+  \begin{align*}
+    \text{Diagonal} &= \sqrt{a^2 + b^2 + c^2} \\
+    \text{Total Surface Area (TSA)} &= 2(ab + bc + ca) \\
+    \text{Lateral Surface Area (LSA)} &= 2h(l + b) \\
+    \text{Volume} &= abc
+  \end{align*}
+
+  \item \small {\textbf{Cube (Square box):}}
+  \begin{align*}
+    \text{Volume} &= a^3 ,\quad
+    \text{LSA} = 4a^2 ,\quad
+    \text{TSA} = 6a^2
+  \end{align*}
+
+  \item \small {\textbf{Sphere (3D Circle):}}
+  \begin{align*}
+    \text{Volume} = \frac{4}{3}\pi r^3 ,\quad
+    \text{LSA} = 4\pi r^2 ,\quad
+    \text{TSA} = 4\pi r^2
+  \end{align*}
+
+  \item \small {\textbf{Hemisphere (half of a sphere):}}
+  \begin{align*}
+    \text{Volume} = \frac{2}{3}\pi r^3 ,\quad
+    \text{LSA} = 2\pi r^2 ,\quad
+    \text{TSA} = 3\pi r^2
+  \end{align*}
+
+  \item \small {\textbf{Cylinder:}}
+  \begin{align*}
+    \text{Volume} = \pi r^2 h ,\quad
+    \text{LSA} = 2\pi r h ,\\
+    \text{TSA} = 2\pi r (r + h)
+  \end{align*}
+
+  \item \small {\textbf{Cone:}}
+  \begin{align*}
+    \text{Volume} = \frac{1}{3}\pi r^2 h ,\quad
+    \text{LSA} = \pi r l ,\\
+    \text{TSA} = \pi (r + l)
+  \end{align*}
+
+\end{itemize}
+
+\subsubsection{Prism}
+
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \small \textbf{Triangular Prism Volume:}
+  \begin{align*}
+    \text{Volume} &= \text{Area of triangle} \times \text{Height} \\
+    &= \left(\frac{1}{2} \times \text{base} \times \text{height}\right) \times \text{Height}
+  \end{align*}
+  where base = length of triangle base, height = height of triangle, Height = height of prism.
+
+  \item \small \textbf{Surface Area of Triangular Prism:}
+  \begin{align*}
+    \text{Surface Area} = 2 \times \text{Area} + \text{Perimeter} \times \text{Height}
+  \end{align*}
+\end{itemize}
+
+\subsubsection{Polygon}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \small \textbf{Polygon Area (Shoelace Formula):} \\
+  Given polygon vertices \(\{p_i\}\),  
+  \vspace{-1em}
+  \begin{align*}
+    \text{Area} = \frac{1}{2} \left| \sum_{i=0}^{n-1} (x_i y_{i+1} - x_{i+1} y_i) \right|
+  \end{align*}
+
+  \item \small \textbf{Polygon Perimeter:}
+  \begin{align*}
+    \text{Perimeter} = \sum_{i=0}^{n-1} \sqrt{(x_{i+1} - x_i)^2 + (y_{i+1} - y_i)^2}
+  \end{align*}
+
+  \item \small \textbf{Centroid of Simple Polygon:}
+  \begin{align*}
+    C_x &= \frac{1}{6A} \sum_{i=0}^{n-1} (x_i + x_{i+1})(x_i y_{i+1} - x_{i+1} y_i) \\
+    C_y &= \frac{1}{6A} \sum_{i=0}^{n-1} (y_i + y_{i+1})(x_i y_{i+1} - x_{i+1} y_i)
+  \end{align*}
+  where \(A\) is the polygon area using the Shoelace Formula.
+
+  \item \small \textbf{Convex Hull:}  
+  Use algorithms like \textit{Graham Scan} or \textit{Monotone Chain} to find the smallest convex polygon enclosing a set of points.
+\end{itemize}
+
+\vspace{0.5em}
+\subsubsection{Lines}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \small \textbf{Line Equations:}
+\vspace{-0.5em}
+  \begin{align*}
+    & y = mx + c \quad \text{(Straight line)} \\
+    & \text{Slope: } m = \frac{y_2 - y_1}{x_2 - x_1} \\
+    & m = \tan \theta \quad \text{(Slope in terms of angle)} \\
+    & m_1 \times m_2 = -1 \quad \text{(Perpendicular lines)} \\
+    & m = \infty \quad \text{(Vertical line)} \\
+    & m = 0 \quad \text{(Horizontal line)}
+  \end{align*}
+
+  \item \small \textbf{Intersection Ratio:} \\
+  A point dividing segment between \((x_1, y_1)\) and \((x_2, y_2)\) in ratio \(m_1 : m_2\):
+\vspace{-1.5em}
+  
+  \begin{align*}
+    x = \frac{m_1 x_2 + m_2 x_1}{m_1 + m_2}, \quad
+    y = \frac{m_1 y_2 + m_2 y_1}{m_1 + m_2}
+  \end{align*}
+
+  \item \small \textbf{Parallel and Perpendicular Lines:}
+  \begin{itemize}[left=10pt]
+    \item \textbf{Parallel line}: change \(c\) to another constant \(k\) in \(y = mx + c\)
+    \item \textbf{Perpendicular line}: swap coefficients and change sign in line form \
+\vspace{-1.2em}
+  \begin{align*}
+      ax + by + c = 0 \quad \Rightarrow \quad bx - ay + k = 0
+    \end{align*}
+  \end{itemize}
+
+  \item \small \textbf{Quadrant-based Angle \(\theta\) for point \(P(x,y)\):}
+\vspace{-1.2em}
+  \begin{align*}
+  \theta = 
+  \begin{cases}
+    \tan^{-1}(\frac{y}{x}), & \text{if } x>0, y>0 \text{ (1st quad)} \\
+    \pi - \tan^{-1}(|\frac{y}{x}|), & \text{if } x<0, y>0 \text{ (2nd quad)} \\
+    \pi + \tan^{-1}(|\frac{y}{x}|), & \text{if } x<0, y<0 \text{ (3rd quad)} \\
+    2\pi - \tan^{-1}(|\frac{y}{x}|), & \text{if } x>0, y<0 \text{ (4th quad)}
+  \end{cases}
+  \end{align*}
+  
+
+  \item \small \textbf{Cartesian and Polar Coordinates:}
+\vspace{-.5em}
+  \begin{align*}
+    x = r \cos \theta,
+    y = r \sin \theta,\
+    r = \sqrt{x^2 + y^2}, \\
+    \theta = \tan^{-1}\left(\frac{y}{x}\right)
+  \end{align*}
+
+\end{itemize}
+
+
+
+\subsection{Vectors}
+% \vspace{-2em}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \textbf{Dot Product:}  
+  For two vectors \(\mathbf{a} = (a_x, a_y, a_z)\) and \(\mathbf{b} = (b_x, b_y, b_z)\), 
+  the dot product gives a scalar representing how much \(\mathbf{a}\) aligns with \(\mathbf{b}\):
+  \vspace{-1em}
+  \begin{align*}
+    \mathbf{a} \cdot \mathbf{b} = a_x b_x + a_y b_y + a_z b_z
+  \end{align*}
+  
+  \textit{Use:} Calculate angle between vectors or check orthogonality (\(\mathbf{a} \cdot \mathbf{b} = 0\)).
+
+  \item \textbf{Cross Product:}  
+  The cross product produces a vector perpendicular to both \(\mathbf{a}\) and \(\mathbf{b}\):
+  \[
+    \mathbf{a} \times \mathbf{b} = \big( a_y b_z - a_z b_y,\quad a_z b_x - a_x b_z,\quad a_x b_y - a_y b_x \big)
+  \]  
+    \textbf{Uses:}
+    \textit{Area of Parallelogram:}  
+    Given two vectors \(\mathbf{a} = (a_x, a_y)\) and \(\mathbf{b} = (b_x, b_y)\), the area of the parallelogram they form is the absolute value of the cross product:
+    \[
+    \text{Area} = \left| \mathbf{a} \times \mathbf{b} \right| = |a_x b_y - a_y b_x|
+    \]
+    In 3D, the area is the magnitude of the cross product vector:
+    \begin{align*}
+    & \text{Area} = \| \mathbf{a} \times \mathbf{b} \| \\ 
+    &=\sqrt{
+    \begin{aligned}
+      (a_y b_z - a_z b_y)^2 
+      + (a_z b_x - a_x b_z)^2 \\
+      + (a_x b_y - a_y b_x)^2
+    \end{aligned}
+    }     
+    \end{align*}
+    This value represents the parallelogram's area formed by \(\mathbf{a}\) and \(\mathbf{b}\).
+    \\
+    
+    \textit{Orientation:}  
+    
+    Find the normal vector and calculate the area of the parallelogram formed by \(\mathbf{a}\) and \(\mathbf{b}\).  
+    To determine the orientation of three points \(A, B, C\), compute the cross product of vectors \(\overrightarrow{AB}\) and \(\overrightarrow{AC}\):
+    \[
+    \overrightarrow{AB} = \langle x_2 - x_1,\ y_2 - y_1,\ z_2 - z_1 \rangle
+    \]
+    \vspace{-1em}
+    \begin{align*}
+        \text{orientation} = (\overrightarrow{AB}) \times (\overrightarrow{AC})
+    \end{align*}
+    
+    - If \(\text{orientation} > 0\), points are arranged counterclockwise. \\
+    - If \(\text{orientation} < 0\), points are arranged clockwise. \\
+    - If \(\text{orientation} = 0\), points are collinear.
+    
+    Essential for convex hull construction, polygon validation, and line intersection detection.
+
+
+  \item \textbf{Projection:}  
+  Projection of vector \(\mathbf{A}\) on \(\mathbf{B}\) finds the component of \(\mathbf{A}\) in the direction of \(\mathbf{B}\):
+  \[
+    \text{scalar} = \frac{\mathbf{A} \cdot \mathbf{B}}{\mathbf{B} \cdot \mathbf{B}}, \quad
+    \mathbf{C} = \text{scalar} \times \mathbf{B}
+  \]
+  where \(0 \leq \text{scalar} \leq 1\) if \(\mathbf{C}\) lies between \(\mathbf{0}\) and \(\mathbf{B}\).  
+  \textit{Use:} Find shadow or component of a vector along another vector.
+\end{itemize}
+
+
+
+\subsection{Convex Hull using Graham\'s}
+\begin{lstlisting}[language=C++]
+/*
+Computes the Convex Hull of a set of 2D points using Graham's Scan.
+- Handles collinear points optionally.
+- Time Complexity: O(n log n), where n is the number of points.
+*/
+
+struct Point {
+    double x, y;
+    bool operator == (const Point& other) const {
+        return x == other.x && y == other.y;
+    }
+};
+
+int orientation(Point a, Point b, Point c) {
+    double crossProduct = a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y);
+    if (crossProduct < 0) return -1; // Clockwise
+    if (crossProduct > 0) return +1; // Counter-clockwise
+    return 0; // Collinear
+}
+
+bool isClockwise(Point a, Point b, Point c, bool includeCollinear) {
+    int orient = orientation(a, b, c);
+    return orient < 0 || (includeCollinear && orient == 0);
+}
+
+bool isCollinear(Point a, Point b, Point c) {
+    return orientation(a, b, c) == 0;
+}
+
+void computeConvexHull(vector<Point>& points, bool includeCollinear = false) {
+    Point pivot = *min_element(points.begin(), points.end(), [](Point a, Point b) {
+        return make_pair(a.y, a.x) < make_pair(b.y, b.x);
+    });
+
+    sort(points.begin(), points.end(), [&pivot](const Point& a, const Point& b) {
+        int orient = orientation(pivot, a, b);
+        if (orient == 0) {
+            double distA = (pivot.x - a.x) * (pivot.x - a.x) + (pivot.y - a.y) * (pivot.y - a.y);
+            double distB = (pivot.x - b.x) * (pivot.x - b.x) + (pivot.y - b.y) * (pivot.y - b.y);
+            return distA < distB;
+        }
+        return orient < 0;
+    });
+
+    if (includeCollinear) {
+        int i = (int)points.size() - 1;
+        while (i >= 0 && isCollinear(pivot, points[i], points.back())) i--;
+        reverse(points.begin() + i + 1, points.end());
+    }
+
+    vector<Point> hull;
+    for (const Point& pt : points) {
+        while (hull.size() > 1 && !isClockwise(hull[hull.size() - 2], hull.back(), pt, includeCollinear)) {
+            hull.pop_back();
+        }
+        hull.push_back(pt);
+    }
+
+    if (!includeCollinear && hull.size() == 2 && hull[0] == hull[1]) {
+        hull.pop_back();
+    }
+
+    points = hull;
+}
+\end{lstlisting}
+
+
+
+\section{Sequence and Series}
+
+\subsection{Nth Term Formulas:} 
+\vspace{-2em}
+\begin{align*}
+& \text{Arithmetic:} \quad a_n = a + (n - 1)d \\
+& \text{Geometric:} \quad a_n = ar^{n-1}
+\end{align*}
+\vspace{-2em}
+
+\subsection{Sum of First $n$ Terms:} 
+\vspace{-2em}
+\begin{align*}
+& \text{Arithmetic:} \quad S_n = \frac{n}{2} \left( 2a + (n - 1)d \right) \\
+& \text{Geometric (if } r < 1 \text{):} \quad S_n = \frac{a(1 - r^n)}{1 - r} \\
+& \text{Geometric (if } r > 1 \text{):} \quad S_n = \frac{a(r^n - 1)}{r - 1}
+\end{align*}
+\vspace{-2em}
+
+\subsection{Special Sums:}
+\vspace{-2em}
+\begin{align*}
+& \text{Sum of first } n \text{ natural numbers:} \quad \frac{n(n + 1)}{2} \\
+& \text{Sum of squares of first } n \text{ natural numbers:} \\ &\quad \quad \frac{n(n + 1)(2n + 1)}{6} \\
+& \text{Sum of squares of first } n \text{ even numbers:} \\ &\quad \quad \frac{2n(n + 1)(2n + 1)}{3} \\
+& \text{Sum of squares of first } n \text{ odd numbers:} \\ &\quad \quad \frac{n(2n + 1)(2n - 1)}{3}
+\end{align*}
+\vspace{-1.5em}
+
+
+\subsection{Equation:}
+\[
+ax^2 + bx + c = 0 \quad \Rightarrow \quad x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]
+
+
+
+
+
+\section{Combinatorics}
+
+\subsection{Permutations (Order Matters)}
+\vspace{-1.5em}
+\begin{align*}
+&\text{Permutation of all } n \text{ elements:} \quad P(n) = n! \\
+& \text{Permutation of } r \text{ elements chosen from } n, \\
+& \quad\quad \text{ no repetition:} \quad P(n, r) = \frac{n!}{(n - r)!} \\ 
+& \quad\quad \text{ with repetition allowed:} \quad P(n, r) = n^r
+\end{align*}
+\textit{Use:} Example: arrange 2 from A, B, C:  AB, BA, AC, CA, BC, CB.
+\subsection{Permutation of Multisets}
+When a set contains \( n \) objects where:
+\begin{itemize}[left=0pt]
+  \item \( P_i \) objects are of the \( i\)-th kind (indistinguishable)
+\end{itemize}
+then the total number of distinct permutations is given by:
+\[
+\frac{n!}{P_1! \cdot P_2! \cdot \cdots \cdot P_k!}
+\]
+
+
+
+\subsection{Derangement (No element in original position)}
+\vspace{-1.5em}
+\begin{align*}
+!n &= \left\lfloor \frac{n!}{e} + 0.5 \right\rfloor \\
+&= n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots + \frac{(-1)^n}{n!} \right)
+\end{align*}
+\textit{Use:} Counts permutations with no fixed points. Useful in problems like secret Santa or seat rearrangements.
+\\
+\textbf{If a permutation has at most $k$ deranged (misplaced) positions:}
+\[
+\text{Total} = \sum_{r=0}^{k} \binom{n}{r} \cdot !r
+\]
+
+It counts permutations of \( n \) elements with at most \( k \) misplaced positions.  
+\(\binom{n}{r}\) chooses which positions are misplaced, and \(!r\) counts derangements of those positions.
+
+
+\subsection{Combinations (Order Doesn't Matter)}
+\vspace{-1.8em}
+\begin{align*}
+& \text{Without repetition:} \quad C(n, r) = \frac{n!}{r!(n - r)!} \\
+& \text{With repetition (multiset selection):}\\& \quad \quad C(n + r - 1, r) = \frac{(n + r - 1)!}{r!(n - 1)!}
+\end{align*}
+\textit{Use:} Example: arrange 2 from A, B, C:  AB, AC, BC.
+
+\subsection{Stars and Bars Theorem}
+\vspace{-1.5em}
+\begin{align*}
+& \text{Number of solutions to } x_1 + x_2 + \cdots + x_k = n, \\
+& \quad\quad \ x_i \geq 0: \quad C(n + k - 1, k - 1) \\
+& \quad\quad \ x_i > 0: \quad C(n - 1, k - 1) \\
+& \quad \ a > 1,  b>3: \\ & \quad\quad C(n +k- 1 - (1 + 3), k - 1)
+\end{align*}
+\vspace{-.2em}
+\textit{Use:} Distribute identical items into boxes with or without emptiness allowed.
+
+\subsection{Circular Permutations}
+\vspace{-1.5em}
+\begin{align*}
+& \text{When clockwise and anticlockwise } \\ &\text{arrangements are considered, }\\
+& \quad\quad \text{ same:} \quad \frac{(n - 1)!}{2} \\
+& \quad\quad \text{different:} \quad (n - 1)!
+\end{align*}
+\textit{Use:} Arrange people/items around a round table or circle.
+
+\subsection{From \( n \) Points}
+\vspace{-1.5em}
+\begin{align*}
+& \text{Number of distinct lines from } n \text{ points:} \\
+& \quad \quad C(n, 2) = \frac{n(n - 1)}{2} \\
+& \text{Number of triangles:} \quad C(n, 3) \\
+& \text{Number of rectangles (in grid points):} \quad C(n, 4) \\
+& \text{Number of diagonals in an } n\text{-sided polygon:} \\
+& \quad \quad C(n, 2) - n = \frac{n(n - 3)}{2}
+\end{align*}
+\textit{Use:} Geometric and combinational problems involving points and polygons.
+
+\subsection{Subset Selection}
+\vspace{-1.5em}
+\begin{align*}
+&\text{Ways to select at least one from } n \text{ elements:}\\
+& \quad \quad \quad \quad \quad 2^n - 1
+\end{align*}
+\textit{Use:} Count non-empty subsets.
+
+\subsection{Maintaining a Condition}
+\vspace{-1em}
+\[
+\left( \frac{n!}{(n - r)!} \right) \times \left( \frac{m}{n} \right)
+\]
+\textit{Use:} This can represent weighted permutations or conditional selections where \(m/n\) is a probability or fraction related to selection.
+
+\subsection{Divisibility}
+
+\textbf{Statement.} For integers \(n\) and \(r\) with \(0\le r\le n\),
+\[
+\frac{n!}{(n-r)!}\quad\text{is divisible by}\quad r!,
+\]
+
+\paragraph{Algebraic proof.}
+By definition of the binomial coefficient,
+\begin{align*}
+&\binom{n}{r}=\frac{n!}{r!(n-r)!}. \\
+    &=\frac{n-r+1}{1} \times  \frac{n-r+2}{2} ...  \times  \frac{n}{r} .
+\end{align*}
+
+
+\paragraph{Example.}
+Take \(n=6,\; r=3\). Then
+\begin{align*}
+\frac{6!}{(6-3)!}=\frac{720}{6}=120,
+\qquad r!=3!=6, \\
+\qquad \frac{120}{6}=20=\binom{6}{3}, \text{ an integer.}
+\end{align*}
+
+
+\subsection{Subarray}
+All possible subarray count:
+\begin{align*}
+a_1,a_2,..,a_n &= \frac{n(n+1)}{2}\\
+&= C(n+1, 2)
+\end{align*}
+
+\paragraph{Sum of Bitwise And of all subarray}
+\begin{align*}
+a_1, a_2,..,a_n &= \sum_{Bit} \sum_{Len} C(Len+1, 2) \times 2^{Bit}\\
+\end{align*}
+\paragraph{Example.} If for some bit $b$ the array has runs of lengths $L_1,L_2,\dots$, that bit's contribution is
+\[
+2^b\sum_i \frac{L_i(L_i+1)}{2}.
+\]
+
+\paragraph{Sum of Bitwise AND of all subsequence}
+\begin{align*}
+a_1, a_2,..,a_n &= \sum_{Bit} (2^{Frequncy_{Bit}} - 1) \times 2^{Bit}\\
+\end{align*}
+
+\paragraph{Sum of Bitwise OR of all subarray}
+\begin{align*}
+a_1, a_2,..,a_n &= \sum_{Bit} (C(n+1, 2) \times 2^{Bit} \\ & - \sum_{L_{0 subarray}} C(L+1, 2) \times 2^{Bit})\\
+\end{align*}
+
+\subsection{Tree}
+All possible subtree path cost:
+\begin{align*}
+ans &= \sum_i cost_i \times childCnt_i \times (n-childCnt_i)\\
+\end{align*}
+
+
+
+
+
+
+\subsection{Pigeonhole Principle}
+\textbf{Statement:} If you have more pigeons than pigeonholes into which you want to distribute those pigeons, at least one pigeonhole must contain more than one pigeon.
+
+\medskip
+\noindent
+\textbf{Formally:} If $n$ objects are placed into $m$ containers and $n > m$, then at least one container must contain more than one object.
+
+
+\subsection{Calculate Modular Inverse and Combinatorics}
+\begin{lstlisting}[language=C++]
+
+const int N = 1e6 + 1;
+const int mod = 1e9 + 7;
+vector<int> facto(N+1, 1), invFacto(N+1, 1);
+
+int mul(ll a, ll b){return (a*b) % mod;}
+int add(ll a, ll b){return (a+b) % mod;}
+int sub(ll a, ll b){return (a-b+mod) % mod;}
+void calcInvFacto(){
+    vector<int> inv(N+1);
+    inv[1] = 1;
+    for(ll i = 2; i<= N; i++){
+        inv[i] = mod - mul(mod / i, inv[mod % i]); 
+    }
+    for(int i=1;i<N;i++){
+        facto[i] = mul(facto[i-1], i);
+        invFacto[i] = mul(invFacto[i-1], inv[i]);
+    }
+}
+int CnR(ll n, ll r){
+    if(r < 0 || r > n) return 0;
+    return mul(facto[n], mul(invFacto[r], invFacto[n-r]));
+}
+int PnR(ll n, ll r){
+    if(r < 0 || r > n) return 0;
+    return mul(facto[n], invFacto[n-r]);
+}
+\end{lstlisting}                                             
+
+
+
+
+
+
+
+
+
+\subsection{Catalan Numbers and Balanced Sequences}
+Catalan numbers count various balanced structures (e.g., valid parentheses sequences).
+
+\textbf{Recursive Formula:}
+\vspace{-1em}
+\begin{align*}
+C_0 = 1,\quad C_1 = 1,\quad C_n = \sum_{k=0}^{n-1} C_k C_{n-1-k}
+\end{align*}
+\textit{Use: Count valid expressions, bracket sequences, tree shapes, etc.}
+
+\textbf{Closed Form:} Number of balanced bracket sequences of length \(2n\):
+\[
+C_n = \frac{1}{n+1} \binom{2n}{n} = \frac{(2n)!}{(n+1)! \cdot n!}
+\]
+\textit{Use: Count number of balanced bracket sequences of length \(2n\).}
+
+\textbf{With \(k\) bracket types:}
+\[
+\text{Count} = C_n \cdot k^n
+\]
+\textit{Use: Add color/type variety to bracket problems.}
+
+\textbf{Prefix Condition:} Number of sequences with \(n + k\) pairs and first \(k\) open brackets:
+\[
+C_{n,k} = \frac{k+1}{n+k+1} \binom{2n+k}{n}
+\]
+\textit{Use: Count bracket sequences with fixed number of opening brackets at start.}
+
+
+
+
+\subsection{Binomial Coefficients}
+\[
+\binom{n}{k} = \frac{n!}{k!(n-k)!}
+\]
+
+\noindent
+\textbf{Meaning:} Number of ways to choose $k$ items from $n$ without regard to order.
+
+\noindent
+\textbf{Use:} Appears in combinatorics, binomial expansion, Pascal’s triangle, and counting problems.
+
+\noindent
+\textbf{Pascal’s Identity:}
+\[
+\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}
+\]
+Used for recursive computation and building Pascal’s Triangle.
+
+
+\vspace{1em}
+\noindent
+\textbf{Pascal's Triangle (First 6 Rows):}
+\begin{lstlisting}
+Start from Row 0 and Col 0, 
+[binom(r, c)]:
+          1         - binom(0,0)
+        1   1       - (1,0) (1,1)
+      1   2   1     - (2,0) (2,1), ...
+    1   3   3   1
+  1   4   6   4   1
+1   5  10  10   5   1
+
+\end{lstlisting}{}
+
+
+
+\subsection{Stirling Numbers}
+
+\subsubsection{First Kind (\(s(n,k)\))}
+Counts permutations of \(n\) elements with \(k\) disjoint cycles:
+\[
+s(n,k) = (n - 1) \cdot s(n-1,k) + s(n-1,k-1)
+\]
+Base cases:
+\[
+s(0,0) = 1,\quad s(n,0) = s(0,n) = 0
+\]
+\textit{Use: Helpful in permutation-based DP.}
+\[
+\sum_{k=0}^n s(n,k) = n!
+\]
+\textit{Use: Total permutations of \(n\) items.}\\
+Example: $s(3,2) = 3$ — Three ways to arrange 3 elements into 2 cycles: (1)(23), (2)(13), (3)(12).  
+
+\subsubsection{Second Kind (\(S(n,k)\))}
+Counts ways to partition \(n\) objects into \(k\) non-empty subsets:
+\[
+S(n,k) = k \cdot S(n-1,k) + S(n-1,k-1)
+\]
+Base cases:
+\[
+S(0,0) = 1,\quad S(n,0) = S(0,n) = 0
+\]
+\textit{Use: Useful in grouping problems.}
+
+\textbf{Special case:}
+\[
+S(n,2) = 2^{n-1} - 1
+\]
+\textit{Use: Special case for partitioning into two subsets.}\\
+Example: Counts ways to divide $3$ elements into $2$ non-empty subsets.  
+ $S(3,2) = 3$ — {1,2}{3}, {1,3}{2}, {2,3}{1}.  
+
+\textbf{Coloring Interpretation:} 
+\begin{align*}
+S(n,k) \cdot k! = \text{Number of colorings using } k\\
+\text{colors such that each is used at least once}
+\end{align*}
+\textit{Use: Coloring or assignment problems ensuring coverage.}
+
+\subsubsection{r-associated  Stirling Number}
+Number of partitions where each subset has at least \(r\) elements:
+\[
+S_r(n,k) = \text{(custom recurrence)}
+\]
+\textit{Use: Partition into subsets with at least \(r\) elements each. Useful in constrained grouping.}
+
+\subsubsection{Reduced Stirling Number \(S_d(n,k)\)}
+Partitions where each element in a subset differs by at least \(d\):
+\begin{align*}
+S_d(n,k) = S(n - d + 1, k - d + 1) \quad \\
+\text{(when } n \geq k \geq d \text{)}
+\end{align*}
+\textit{Use: Partition such that elements in each subset are at least distance \(d\) apart.}
+
+\section{Probability / Expected Value Cheat Sheet}
+
+\subsection{Probability basics}
+If an event $E$ occurs in $r$ ways out of $n$ equally likely outcomes,
+\[
+P(E)=\frac{r}{n}, \qquad P(E')=1-P(E).
+\]
+Complement rule:
+\[
+P(E)+P(E')=1.
+\]
+
+% --- union / inclusion-exclusion (2,3 and general) ---
+
+\subsubsection{Inclusion-Exclusion:} 
+\noindent
+Two events $A,B$:
+\[
+\begin{aligned}
+&P(A\cup B)=P(A)+P(B)-P(A\cap B),
+\\& P(A\cap B)=P(B)\,P(A\mid B).
+\end{aligned}
+\]
+
+\noindent
+Three events $A,B,C$:
+\[
+\begin{aligned}
+&P(A\cup B\cup C) =P(A)+P(B)+P(C)\\
+&  -P(A\cap B)-P(B\cap C)-P(A\cap C)\\
+& +P(A\cap B\cap C).
+\end{aligned}
+\]
+
+% --- short notes / tips ---
+\noindent
+\begin{itemize}
+  \item \textbf{Notes:} If events are pairwise disjoint, all intersections vanish and the union probability is the sum of individual probabilities.
+\end{itemize}
+
+
+
+\noindent
+Conditional probability:
+\[
+P(A\mid B)=\frac{P(A\cap B)}{P(B)}\quad (P(B)>0).
+\]
+Independence:
+\[
+\begin{aligned}
+P(A\cap B)=P(A)P(B).
+\end{aligned}
+\]
+
+\subsection{Expected value}
+\textbf{Definition (discrete).}
+If a random variable $X$ takes values $x_1,\dots,x_k$ with probabilities $p_1,\dots,p_k$ then
+\[
+\mathbb{E}[X]=\sum_{i=1}^k x_i p_i.
+\]
+For a countable set of outcomes,
+\[
+\mathbb{E}[X]=\sum_{i=1}^{\infty} x_i p_i,
+\]
+provided the sum converges (absolutely in most uses).
+
+
+\textbf{Linearity of expectation (always true).}
+For any random variables $X,Y$ (not necessarily independent) and constants $a,b$,
+
+\vspace{-5mm}
+\begin{align*}
+\mathbb{E}[X+Y]=\mathbb{E}[X]+\mathbb{E}[Y], 
+\\ \mathbb{E}[aX+b]=a\mathbb{E}[X]+b.
+\end{align*}
+
+\textbf{Indicator variables.} If $I_A$ is the indicator of event $A$ (i.e. $I_A=1$ when $A$ occurs, else $0$), then
+\[
+\mathbb{E}[I_A]=P(A).
+\]
+Use indicator variables plus linearity to simplify many counting expectations:
+\[
+\mathbb{E}\Big[\sum_{i} I_i\Big] = \sum_i \mathbb{E}[I_i] = \sum_i P(I_i=1).
+\]
+
+\paragraph{Small examples}
+
+\paragraph{Fair die}
+If $X$ is the outcome of a fair six-sided die,
+\[
+\mathbb{E}[X]=\frac{1+2+3+4+5+6}{6}=3.5.
+\]
+
+\paragraph{Expected number of fixed points in a random permutation of $n$}
+Let $I_j$ indicate that element $j$ is a fixed point. Then $P(I_j=1)=1/n$, so
+\[
+\mathbb{E}[\#\text{ fixed points}] = \sum_{j=1}^n \mathbb{E}[I_j] = n\cdot\frac{1}{n}=1.
+\]
+
+\subsubsection{Geometric / recursion}
+\paragraph{Example: ``toss until first head'' (success prob.\ $p$).}
+Let $T$ be the number of tosses until the first success (so $P(T=k)=(1-p)^{k-1}p$ for $k\ge1$).
+By summing the series,
+\[
+\mathbb{E}[T]=\sum_{k=1}^{\infty} k(1-p)^{k-1}p=\frac{1}{p}.
+\]
+Equivalently, recursion: conditioning on the first toss gives
+\[
+\mathbb{E}[T]=1\cdot p + (1+\mathbb{E}[T])\cdot(1-p)
+\;\Longrightarrow\; \mathbb{E}[T]=\frac{1}{p}.
+\]
+For $p=\tfrac12$ this yields $\mathbb{E}[T]=2$.
+
+
+\subsubsection{Recursive expectations}
+
+\textbf{Law of total expectation.} If after the first step one of several actions $i$ happens with probability $p_i$, giving immediate reward $r_i$ and leaving a subproblem with expected remaining value $E_i$, then
+\[
+\mathbb{E}[X] \;=\; \sum_i p_i\,(r_i + E_i).
+\]
+Solve the resulting linear equation(s) for the unknown expectation(s).
+
+\medskip
+\paragraph{Example 1:``toss until first head'' (success prob.\ $p$).}
+Let $T$ be the number of tosses until the first head. Condition on the first toss:
+\[
+T=\begin{cases}
+1, & \text{w.p. } p,\\[4pt]
+1+T', & \text{w.p. } 1-p,
+\end{cases}
+\]
+where $T'\overset{d}{=}T$ (fresh copy). Taking expectations:
+\[
+\mathbb{E}[T] = p\cdot 1 + (1-p)\cdot(1+\mathbb{E}[T]).
+\]
+Solve for $\mathbb{E}[T]$:
+\begin{align*}
+\mathbb{E}[T] = p + (1-p) + (1-p) \mathbb{E}[T] 
+\\ = 1 + (1-p)\mathbb{E}[T] = p\,\mathbb{E}[T]=1
+\\ \mathbb{E}[T]=\frac{1}{p}.
+\end{align*}
+
+\paragraph{Example 2: expected number of fair-coin flips to see two consecutive heads.}
+Use states: $E_0$ = expected flips starting with no previous head, $E_1$ = expected flips given the previous flip was a head.
+\[
+\begin{aligned}
+E_0 &= 1 + \tfrac12 E_1 + \tfrac12 E_0, \\
+E_1 &= 1 + \tfrac12\cdot 0 + \tfrac12 E_0.
+\end{aligned}
+\]
+Solve the system. From the first equation $E_0-\tfrac12E_0=1+\tfrac12E_1$, so $E_0=2+E_1$.
+Substitute into the second: $E_1 = 1 + \tfrac12(2+E_1)=2+\tfrac12E_1$, hence $\tfrac12E_1=2$ and $E_1=4$. Thus $E_0=2+4=6$.
+So the expected number of flips to get two consecutive heads is $6$.
+
+
+\subsection{Variance (brief)}
+\[
+\operatorname{Var}(X)=\mathbb{E}[X^2]-(\mathbb{E}[X])^2.
+\]
+Affine property:
+\[
+\operatorname{Var}(aX+b)=a^2\operatorname{Var}(X).
+\]
+
+\subsubsection{Useful identities}
+\text{Law of total probability:}
+\begin{align*}
+\quad & P(A)=P(A\mid B)P(B)+P(A\mid B^c)P(B^c).\\
+\end{align*}
+\text{Bayes' theorem:}
+\begin{align*}
+ & P(B\mid A)=\frac{P(A\mid B)P(B)}{P(A)}\quad(P(A)>0).
+\end{align*}
+\text{Mismatch in permutation:}
+\begin{align*}
+ & P(a_1)= 1 - \frac{1}{n}.
+ \\& P(a_1..a_n) = n - 1
+\end{align*}
+\text{Number of connected component in a tree:}
+\begin{align*}
+\mathbb{E}(x) &=  \mathbb{E}[notEdge] + 1.
+ \\&= \mathbb{E}[notEdge]_1 +\mathbb{E}[notEdge]_2... + 1.
+\end{align*}
+\subsection{Contest tips}
+\begin{itemize}
+  \item Use inclusion--exclusion for unions of many events.
+  \item Use Stirling numbers when counting set partitions (unlabeled boxes).
+  \item Use indicator variables + linearity to turn combinatorial counts into simple expectations.
+  \item For recursive expectations, condition on the first step and solve the resulting linear equation.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+\section{Fibonacci Numbers}
+
+\subsection{Definition:}
+\vspace{-1.5em}
+\[
+F_1 = F_2 = 1, \quad F_{n+1} = F_n + F_{n-1}
+\]
+
+\subsection{Properties}
+\begin{itemize}[left=0pt, itemsep=0pt]
+    \item For a prime number \( p \), the Fibonacci number \( F_p \) satisfies:
+    \vspace{-1em}
+    \[
+    F_p \equiv \left(\frac{p}{5}\right) \pmod{p},
+    \]
+    where \(\left(\frac{p}{5}\right)\) is the \textbf{Legendre symbol}, which indicates whether 5 is a quadratic residue modulo \( p \).
+    
+    \item The greatest common divisor (GCD) of two Fibonacci numbers equals the Fibonacci number indexed by their GCD:
+    \vspace{-1em}
+    \[
+    \gcd(F_m, F_n) = F_{\gcd(m, n)}.
+    \]
+    
+    \item Consecutive and nearby Fibonacci numbers are coprime:
+    \vspace{-1em}
+    \begin{align*}
+        \gcd(F_n, F_{n+1}) = 1, \quad \gcd(F_n, F_{n+2}) = 1, \\ \gcd(F_{n+1}, F_{n+2}) = 1.
+    \end{align*}
+    
+    \item The Fibonacci sequence modulo \( n \) is periodic, known as the \textbf{Pisano period}. The period length satisfies:
+    \[
+    \text{period length} \leq 6n.
+    \]
+    This helps to efficiently compute large Fibonacci numbers modulo \( n \).
+    
+    \item A number \( n \) is Fibonacci if and only if either
+    \[
+    5n^2 + 4 \quad \text{or} \quad 5n^2 - 4 \quad
+    \text{(is a perfect square)}.
+    \]
+    
+    \item Every third Fibonacci number is even:
+    \[
+    F_{3k} \text{ is even.}
+    \]
+    More generally, every \( k \)-th Fibonacci number is divisible by \( F_k \):
+    \[
+    F_{k} \mid F_{m} \quad \text{if} \quad k \mid m.
+    \]
+\end{itemize}
+
+\subsection{Closed Form (Binet's Formula)}
+The \(n\)-th Fibonacci number can be calculated directly using the \textbf{closed-form expression}, known as Binet's formula:
+\[
+F_n = \frac{1}{\sqrt{5}} \left( \left( \frac{1 + \sqrt{5}}{2} \right)^n - \left( \frac{1 - \sqrt{5}}{2} \right)^n \right).
+\]
+\textit{Use:} This formula helps compute Fibonacci numbers in \(O(1)\) time without recursion or loops, useful when \(n\) is not too large (due to floating point precision).
+
+\vspace{0.5em}
+\subsection{Sum of the First \(n\) Fibonacci Numbers}
+The sum of the first \(n\) Fibonacci numbers satisfies:
+\[
+\sum_{i=1}^n F_i = F_{n+2} - 1.
+\]
+
+\subsection{Log-factorial precompute}
+\paragraph{If answer fits within Integer:}
+Compute \(\log(n!)\) efficiently for many queries by precomputing prefix sums of logs:
+\[
+\log(n!)=\sum_{k=1}^n \log k,\qquad \log(0!)=0.
+\]
+
+\begin{lstlisting}[language=C++]
+Time Complexity: O(N) preprocessing and O(1) per query.
+const int MAXN = 1000000;         
+vector<double> logFact(MAXN+1);
+
+void pre(int N){
+    logFact[0] = 0.0;
+    for(double i = 1; i <= N; ++i){
+        logFact[i] = logFact[i-1] + log(i);
+    }
+}
+
+// log(a*b) = log(a) + log(b)
+// log(a/b) = log(a) - log(b)
+// reverse = exp(i) or expl(i)
+
+\end{lstlisting}
+
+
+
+
+
+
+\section{Calendar Day Calculation}
+
+% Zeller's Congruence
+Zeller's congruence is an algorithm to compute the day of the week for any date. It has different versions for the Gregorian and Julian calendars.
+
+\subsection{Gregorian Calendar}
+\vspace{-2em}
+\begin{align*}
+\begin{aligned}
+    h = ( q + \left\lfloor \frac{13(m+1)}{5} \right\rfloor + k + \left\lfloor \frac{k}{4} \right\rfloor + \left\lfloor \frac{j}{4} \right\rfloor \\ - 2j ) \bmod 7
+\end{aligned}
+\end{align*}
+\vspace{-1.5em}
+
+\subsection{Julian Calendar}
+\vspace{-2em}
+\begin{align*}
+\begin{aligned}
+h = \left( q + \left\lfloor \frac{13(m+1)}{5} \right\rfloor + k + \left\lfloor \frac{k}{4} \right\rfloor + 5 - j \right) \\ \bmod 7
+\end{aligned}
+\end{align*}
+\vspace{-1.5em}
+
+\subsubsection{Where:}
+\begin{itemize}
+    \item \(h\) is the day of the week (0 = Saturday, 1 = Sunday, ..., 6 = Friday)
+    \item \(q\) is the day of the month
+    \item \(m\) is the month (March = 3, ..., January = 13, February = 14 of the \textbf{previous year})
+    \item \(k = \text{year} \bmod 100\) (the year within the century)
+    \item \(j = \left\lfloor \frac{\text{year}}{100} \right\rfloor\) (the zero-based century)
+\end{itemize}
+
+\subsection{Adjustment for January and February}
+If the month is January or February, use:
+\begin{align*}
+    m = 13 \text{ (January)}, \quad m = 14 \text{ (February)},\\ \text{year} = \text{year} - 1
+\end{align*}
+
+\textit{Use: Quickly determine the day of the week for a given date.)}
+
+
+
+
+\section{Modular Arithmetic}
+
+\subsection{Modular Arithmetic Rules}
+For any integers \( a \), \( b \), and a modulus \( m \),:
+\vspace{-0.5em}
+\begin{align*}
+(a + b)\ \%\ m &= ((a\ \%\  m) + (b\ \%\  m))\ \%\  m \\
+(a - b)\ \%\  m &= ((a\ \%\  m) - (b\ \%\  m) + m)\ \%\   m \\
+(a \cdot b)\ \%\  m &= ((a \ \%\   m) \cdot (b \ \%\   m)) \ \%\   m \\
+\end{align*}
+\vspace{-2em}
+\subsubsection{Modular Division}
+\[
+\frac{a}{b}\ \%\  m = (a \cdot b^{-1})\ \%\  m
+\]
+\textbf{Note:} The modular inverse \( b^{-1} \ \%\   m\) exists only if \( \gcd(b, m) = 1 \).  
+To compute modular inverse use Fermat\'s theorem
+
+
+
+\subsubsection{Fermat\'s Little Theorem: Prime check}
+\[
+&b^{-1} \ \%\  m = b^{m - 2}\ \%\  m 
+\]
+if \(m\) is prime.
+
+
+\subsubsection{Miller-Rabin Primality Test}
+Write \( n - 1 = 2^s \cdot d \), where \( d \) is odd.
+\begin{align*}
+&a^{n-1} \equiv 1 \ \%\  n \\
+\Rightarrow &a^{2^k.d} \equiv 1 \ \%\  n \\
+\Rightarrow &a^{2^{k-1}.d} - 1\equiv 0 \ \%\  n \\
+\Rightarrow &(a^{2^{k-1}.d} + 1)....(a^d + 1)(a^d - 1)\equiv 0 \ \%\  n \\
+\end{align*}
+\vspace{-1em}
+Pick base \( a \in [2, n-2] \), then compute:
+\[
+x = a^d \bmod n
+\]
+
+If \( x \ne 1 \) and \( x \ne n - 1 \), repeat:
+\[
+x = x^2 \bmod n
+\]
+If \( x \ne n - 1 \) after all steps, then \( n \) is \textbf{composite}.
+
+
+
+
+\subsection{Modular Arithmetic}
+\noindent
+Operators for modular arithmetic. You must first set the value of \texttt{mod}. 
+
+\begin{lstlisting}[language=C++]
+const ll mod = 17; // change to something else
+
+struct Mod {
+    ll x;
+    Mod(ll xx) : x(xx) {}
+    Mod operator+(Mod b) {
+        return Mod((x + b.x) % mod);
+    }
+    Mod operator-(Mod b) {
+        return Mod((x - b.x + mod) % mod);
+    }
+    Mod operator*(Mod b) {
+        return Mod((x * b.x) % mod);
+    }
+    Mod operator/(Mod b) {
+        return *this * invert(b);
+    }
+    Mod invert(Mod a) {
+        ll x, y, g = euclid(a.x, mod, x, y);
+        assert(g == 1);
+        return Mod((x + mod) % mod);
+    }
+    Mod operator^(ll e) {
+        if (!e) return Mod(1);
+        Mod r = *this ^ (e / 2); r = r * r;
+        return e & 1 ? *this * r : r;
+    }
+};
+\end{lstlisting}
+
+
+\subsection{Matrix multiplication}
+Multiply matrices A (n x p) and B (p x m) and return C = A*B (n x m).
+\begin{lstlisting}[language=C++]
+vector<vector<long long>> multiplyMatricesLL(const vector<vector<int>>& A, const vector<vector<int>>& B) {
+    const size_t n = A.size();
+    if (n == 0) return {};
+
+    const size_t p = A[0].size();
+    for (const auto &row : A) if (row.size() != p) return {};
+    if (B.size() != p) return {};
+
+    const size_t m = B.empty() ? 0u : B[0].size();
+    for (const auto &row : B) if (row.size() != m) return {};
+
+    vector<vector<long long>> C(n, vector<long long>(m, 0));
+
+    for (size_t i = 0; i < n; ++i) {
+        for (size_t k = 0; k < p; ++k) {
+            long long aik = A[i][k];
+            for (size_t j = 0; j < m; ++j) {
+                C[i][j] += aik * static_cast<long long>(B[k][j]);
+            }
+        }
+    }
+    return C;
+}
+\end{lstlisting}
+
+$(AdjMatrix)^n$ finds count of path that has exactly n edges.
+\paragraph{Notes:}
+\begin{itemize}
+  \item Time complexity: \(O(n\cdot p\cdot m)\).
+\end{itemize}
+
+
+\subsection{GCD and LCM}
+
+\begin{itemize}
+    \item \( \gcd(a, b) = \texttt{\_\_gcd}(a, b) \)  
+    \textit{Use: Reduces fractions, checks coprimality, essential in number theory.}
+    \item \( \text{lcm}(a, b) = \frac{a \cdot b}{\gcd(a, b)} \)  
+    \textit{Use: Finds the smallest common multiple, useful in periodic pattern problems.}
+\end{itemize}
+
+\subsection{Euler's Totient}
+\vspace{-1.5em}
+
+\begin{align*}
+& \text{If } \gcd(x, m) = 1, \quad x^{\phi(m)} \equiv 1 \pmod{m} \\
+& \text{If } \gcd(x, m) = 1, \quad x^n \equiv x^{n \bmod \phi(m)} \pmod{m}
+\end{align*}
+
+
+
+
+
+\subsection{Cayley's Formula}
+
+Cayley's formula states that the number of labeled trees with $n$ vertices is:
+\[
+n^{n-2}
+\]
+
+\noindent
+A \textbf{labeled tree} is an undirected tree where each vertex is uniquely labeled from $1$ to $n$.
+
+\begin{itemize}
+  \item For $n = 3$, total trees = $3^{3-2} = 3$
+  \item For $n = 4$, total trees = $4^{4-2} = 16$
+\end{itemize}
+
+
+
+
+
+
+
+
+\section{Algorithms}
+\subsection{Big Mod (Modular Exponentiation)}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(log b)
+ * Computes (a^b) % m
+ */
+ll binPow(ll a, ll b, ll m) {
+    if (b == 0) return 1;
+    if (b == 1) return a % m;
+    ll ans = binPow(a, b / 2, m);
+    ans = (ans * ans) % m;
+    if (b % 2 == 1) ans = (ans * a) % m;
+    return ans;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=C++]
+/**
+ * Iterative approach
+ */
+ll binPow(ll a, ll b) {
+    ll ans = 1;
+    while (b) {
+        if (b & 1) ans = (ans * a) % mod;
+        a = (a * a) % mod;
+        b >>= 1;
+    }
+    return ans;
+}
+\end{lstlisting}
+
+\subsection{Big Mod with Big Multiplication}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(log b)
+ * Computes (a^b) % m
+ * Calculate(1e18^1e18) without uint
+ */
+ll binMul(ll a, ll b, ll m)
+{
+   ll ans = 0;
+   while (b)
+   {
+      if (b & 1)
+      {
+         ans = (ans + a) % m;
+      }
+      a = (a + a) % m;
+      b >>= 1;
+   }
+   return ans % m;
+}
+ll binPow(ll a, ll b, ll m)
+{
+   ll ans = 1;
+   while (b)
+   {
+      if (b & 1)
+      {
+         ans = binMul(ans, a, m);
+      }
+      a = binMul(a, a, m);
+      b >>= 1;
+   }
+   return ans;
+}
+\end{lstlisting}
+
+\subsection{Modular Inverse}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(log m)
+ * assuming m is prime using Fermat's Little Theorem.
+ * inv(a) = a^(m-2) % m
+ */
+ll inv(ll a, ll m) {
+    return binPow(a, m - 2, m) % m;
+}
+\end{lstlisting}
+
+
+\subsection{Extended Euclidean Algorithm}
+
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(log(min(a, b)))
+ * Computes gcd of a and b, and finds x, y such that: ax + by = gcd(a, b)
+ * Useful to find modular inverse when gcd(a, m) = 1.
+ */
+ll gcdExtended(ll a, ll b, ll &x, ll &y) {
+	if (!b) return x = 1, y = 0, a;
+	ll d = gcdExtended(b, a % b, y, x);
+	return y -= a/b * x, d;
+}
+
+void solve(){
+    int x = 0, y = 0;
+    int g = gcdExtended(a, m, x, y);
+    if (g != 1) {
+        // No modular inverse exists
+    } else {
+        x = (x % m + m) % m; // x is modular inverse of a mod m
+    }
+}
+
+\end{lstlisting}
+
+\textbf{Example:}  
+Input: \(a = 35\), \(m = 15\) \\
+Output: \(\gcd = 5\), \(x = 1\), \(y = -2\) \\
+Verification: \(35 \times 1 + 15 \times (-2) = 5\)
+
+
+
+\subsection{Sieve of Eratosthenes}
+\begin{lstlisting}[language=C++]
+/**
+ * Computes primes up to N using sieve in O(N log log N).
+ * Computes for each number:
+ * - lowest prime factor (lp),
+ * - highest prime factor (hp),
+ */
+
+const int N = 1e7 + 10; 
+vector<bool> isPrime(N + 1, true);
+vector<int> lp(N + 1, 0), hp(N + 1, 0);
+
+void sieve() {
+    isPrime[0] = isPrime[1] = false;
+
+    for (long long p = 2; p * p <= N; p++) {
+        if (isPrime[p]) {
+            lp[p] = hp[p] = p;
+
+            for (int i = p * 2; i <= N; i += p) {
+                isPrime[i] = false;
+                hp[i] = p;
+                if (lp[i] == 0) lp[i] = p;
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+\subsection{Segmented Sieve}
+\begin{lstlisting}[language=C++]
+/**
+ * Find primes in range [L, R] in O((R-L+1) * sqrt(R))
+ */
+
+vector<char> segmentedSieveNoPreGen(long long L, long long R) {
+    vector<char> isPrime(R - L + 1, true);
+    long long lim = sqrt(R);
+
+    for (long long i = 2; i <= lim; ++i) {
+        for (long long j = max(i * i, (L + i - 1) / i * i); j <= R; j += i) {
+            isPrime[j - L] = false;
+        }
+    }
+
+    if (L == 1) isPrime[0] = false;  // 1 is not prime
+
+    return isPrime;
+}
+\end{lstlisting}
+
+
+\subsection{Prime Factors}
+\begin{lstlisting}[language=C++]
+/**
+ * Finds prime factors count of a number using hp array from sieve.
+ * Time: O(log n) per query.
+ */
+// Assume hp[] is precomputed by sieve
+
+map<long long, long long> getPFCounts(long long num, const vector<int>& hp) {
+    map<long long, long long> primeFactorCount;
+    while (num > 1) {
+        int primeFac = hp[num];
+        while (num % primeFac == 0) {
+            primeFactorCount[primeFac]++;
+            num /= primeFac;
+        }
+    }
+    return primeFactorCount;
+}
+\end{lstlisting}
+
+
+
+\subsection{Miller Rabin Prime check till 1e18}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(log n)
+ */
+bool miller(ll n){
+   if (n < 4) return n > 1;
+   if (n % 2 == 0) return false;
+
+   ll nOdd = n - 1, cnt2 = 0;
+   while (nOdd % 2 == 0){
+      nOdd /= 2;
+      cnt2++;
+   }
+   vector<ll> primes = {2, 3, 5, 7, 11};
+
+   for (auto &b : primes){
+      if (b >= n) break;
+
+      b = binPow(b, nOdd, n);
+      if (b == 1 || b == n - 1){
+         continue;
+      }
+
+      ll pow2 = cnt2;
+      while (b != n - 1 && pow2){
+         b = binMul(b, b, n);
+         pow2--;
+      }
+      if (b != n - 1){
+         return false;
+      }
+   }
+   return true;
+}
+\end{lstlisting}
+
+
+
+\subsection{Euler\'s Totient Function (Phi Function)}
+
+Euler\'s Totient function $\phi(n)$ counts the number of integers from $1$ to $n$ that are coprime with $n$.
+
+\textbf{1. Computing $\phi(1)$ to $\phi(n)$ using a sieve-like method:}
+
+\begin{lstlisting}[language=C++]
+// Time: O(N log log N) 
+void phi_1_to_n(int n) {
+    vector<int> phi(n + 1);
+    for (int i = 0; i <= n; i++)
+        phi[i] = i;
+
+    for (int i = 2; i <= n; i++) {
+        if (phi[i] == i) {  
+            for (int j = i; j <= n; j += i)
+                phi[j] -= phi[j] / i; 
+        }
+    }
+}
+\end{lstlisting}
+
+\paragraph{2. Computing $\phi(n)$ for a single number $n$ in $O(\sqrt{n})$:}
+
+This method factorizes $n$ and applies the formula: 
+\[
+\phi(n) = n \times \prod_{p|n} \left(1 - \frac{1}{p}\right)
+\]
+where $p$ are the distinct prime factors of $n$.
+
+\begin{lstlisting}[language=C++]
+// Time: O(sqrt(n)) 
+int phi(int n) {
+    int result = n;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            while (n % i == 0)
+                n /= i;
+            result -= result / i;  // Remove contribution of prime factor i
+        }
+    }
+    if (n > 1)
+        result -= result / n;  // Remove contribution of last prime factor
+    return result;
+}
+\end{lstlisting}
+
+
+
+
+
+\subsection{Find Divisors \& Count (till N)}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(n log n)
+ */
+const int Max = 1e5 + 10;
+long long divcnt[Max];          
+vector<long long> divs[Max];   
+
+void DivisorCount(int n) {
+    for (int i = 1; i <= n; i++) {
+        for (int j = i; j <= n; j += i) {
+            divcnt[j]++;      
+            divs[j].push_back(i);
+        }
+    }
+}
+
+/**
+ * Usage example: DivisorCount(10);
+ * divcnt[6] = 4, divs[6] = {1, 2, 3, 6}
+ */
+\end{lstlisting}
+
+\subsection{Count \& SumOfDivisors of N}
+\begin{lstlisting}[language=C++]
+/**
+ * Calculates the count and sum of divisors of a number using its prime factorization.
+ * Precompute hp using Sieve, and prime factors count 
+ * Time complexity:  O(log n)
+ */
+\end{lstlisting}
+\vspace{-0.8em}
+\[
+\text{If }n = P_1^{n_1} \times P_2^{n_2} \times \cdots \times P_k^{n_k} \quad \text{then,}
+\]
+\subsubsection{Count of divisors:}
+\vspace{-1.2em}
+\[
+\text{count} = (n_1 + 1)(n_2 + 1) \cdots (n_k + 1)
+\]
+
+\subsubsection{Sum of divisors:}
+\vspace{-1.2em}
+\begin{align*}
+    \begin{aligned}
+    \text{sum} &= \prod_{i=1}^{k} \frac{P_i^{n_i+1} - 1}{P_i - 1}\\
+    =& \left(1 + P_1 + P_1^2 + \cdots + P_1^{n_1}\right) \times \cdots \\ 
+    &\times \left(1 + P_k + P_k^2 + \cdots + P_k^{n_k}\right)
+\end{aligned}
+\end{align*}
+
+
+\small{\textbf{Example:} For \(36 = 2^2 \times 3^2\),
+\vspace{-0.8em}
+\[
+\text{count} = (2+1)(2+1) = 9
+\]
+\vspace{-0.8em}
+\[
+\text{sum} = \frac{2^{3} - 1}{2 - 1} \times \frac{3^{3} - 1}{3 - 1} = 7 \times 13 = 91
+\]
+}
+
+\subsection{Sum of Divisors from 1 to \(N\)}
+
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(N)
+ */
+long long sumOfDivisors(long long N) {
+    long long sum = 0;
+    for (long long i = 1; i <= N; i++) {
+        sum += i * (N / i);
+    }
+    return sum;
+}
+\end{lstlisting}
+\vspace{-0.8em}
+\small{
+\textbf{Formula:}
+\[
+\text{SOD of all numbers from } 1 \text{ to } N = \sum_{i=1}^{N} i \cdot \left\lfloor \frac{N}{i} \right\rfloor
+\]
+
+\textbf{Explanation:}  
+Every number \(i\) is a divisor of exactly \(\left\lfloor \frac{N}{i} \right\rfloor\) numbers between 1 and \(N\), so we add \(i \times \left\lfloor \frac{N}{i} \right\rfloor\) to the total sum.
+\vspace{0.5em}
+\textbf{Example:} For \(N = 2\),
+\vspace{-1.2em}
+\[
+\text{Sum} = 1 \cdot \left\lfloor \frac{2}{1} \right\rfloor + 2 \cdot \left\lfloor \frac{2}{2} \right\rfloor = 1 \cdot 2 + 2 \cdot 1 = 4
+\]
+}
+
+
+
+\subsection{Power of a Prime in \(n!\)}
+\begin{lstlisting}[language=C++]
+/**
+ * Finds the exponent of a prime number p in the factorization of n! This counts how many times p divides n!
+ * Time Complexity: O(log_p n)
+ */
+
+long long largestPower(long long n, long long p) {
+    long long x = 0;
+    while (n) {
+        n /= p; x += n;
+    }
+    return x;
+}
+\end{lstlisting}
+
+\vspace{0.5em}
+\small{
+\textbf{Formula:}
+\[
+e = \left\lfloor \frac{n}{p} \right\rfloor + \left\lfloor \frac{n}{p^2} \right\rfloor + \left\lfloor \frac{n}{p^3} \right\rfloor + \cdots
+\]
+
+\vspace{0.5em}
+\textbf{Example:} Find the power of 5 in \(100!\)
+\[
+e = \left\lfloor \frac{100}{5} \right\rfloor + \left\lfloor \frac{100}{25} \right\rfloor + \left\lfloor \frac{100}{125} \right\rfloor
+= 20 + 4 + 0 = 24
+\]
+
+\textbf{Answer:} The power of 5 in \(100!\) is \(\boxed{24}\).
+}
+
+
+
+\section{Graph Algorithm}
+
+\subsection{Dijkstra's}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O((n + m) log n)
+ * Computes the shortest distance from a single source node to all others.
+ * Requires non-negative edge weights.
+ */
+
+void dijkstra(int src) {
+    vector<ll> dist(n + 1, 1e9);
+    dist[src] = 0;
+
+    // Min-heap: (distance, node)
+    priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, greater<pair<ll, ll>>> pq;
+    pq.push({0, src});
+
+    while (!pq.empty()) {
+        auto [dis, u] = pq.top();
+        pq.pop();
+
+        if (dis != dist[u]) continue;
+
+        for (auto [v, w] : G[u]) { // G[u] holds pairs (v, weight)
+            if (dist[v] > dist[u] + w) {
+                dist[v] = dist[u] + w;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+
+\subsection{Floyd-Warshall}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(n^3)
+ * It computes the shortest distance between every pair of nodes.
+ * Works for positive and negative edge weights.
+ * Does not work correctly if the graph contains a negative weight cycle.
+ */
+int n, m;
+vector<vector<long long>> dist(n + 1, vector<long long>(n + 1, LLONG_MAX));
+
+for (int via = 1; via <= n; via++) {
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            if (dist[i][via] != LLONG_MAX && dist[via][j] != LLONG_MAX) {
+                dist[i][j] = min(dist[i][j], dist[i][via] + dist[via][j]);
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+
+\subsection{Bellman-Ford}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(n * m)
+ * Detects the shortest or longest path from a source node.
+ * Can detect the presence of a positive or negative cycle.
+ * This version returns -1 if there's a positive cycle on the way to the destination.
+ */
+int n, m, src;
+vector<vector<pair<ll, ll>>> graph;
+vector<ll> dist(n + 1, LLONG_MIN);
+
+dist[src] = 0;
+
+// Relax edges n times to detect positive cycle
+for (int cnt = 1; cnt <= n; cnt++) {
+    for (int u = 1; u <= n; u++) {
+        for (auto [w, v] : graph[u]) {
+            if (dist[u] != LLONG_MIN && dist[v] < dist[u] + w) {
+                if (cnt == n) {
+                    // Positive cycle detected
+                    return {-1};
+                }
+                dist[v] = dist[u] + w;
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+
+\subsection{Kruskal's for MST}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(E log E)
+ */
+
+const int Max = 100001;
+struct Edge {
+    int u, v, w;
+} edges[Max];
+
+int parent[Max], node, edge;
+
+int Find_parent(int n) {
+    if (parent[n] == n) return n;
+    return Find_parent(parent[n]); 
+}
+
+int kruskal() {
+    int sum = 0;
+    for (int i = 1; i <= node; i++)
+        parent[i] = i;
+
+    for (int i = 1; i <= edge; i++) {
+        int u = Find_parent(edges[i].u);
+        int v = Find_parent(edges[i].v);
+
+        if (u != v) {
+            parent[u] = v;
+            sum += edges[i].w;
+        }
+    }
+    return sum;
+}
+
+int main() {
+    cin >> node;
+    edge = 0;
+    while (true) {
+        int u, v, w;
+        if (!(cin >> u >> v >> w)) break;  // Read until EOF or input ends
+        edges[++edge] = {u, v, w};
+    }
+
+    // For Minimum Spanning Tree
+    sort(edges + 1, edges + edge + 1, [](Edge a, Edge b) { return a.w < b.w; });
+    cout << kruskal() << "\n";
+
+    // For Maximum Spanning Tree
+    sort(edges + 1, edges + edge + 1, [](Edge a, Edge b) { return a.w > b.w; });
+    cout << kruskal() << "\n";
+
+    return 0;
+}
+\end{lstlisting}
+
+
+\subsection{Prim's for (MST)}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(m log n)
+ */
+
+const int Max = 1e5 + 10;
+bool visited[Max];
+vector<pair<long long, int>> G[Max];
+
+long long prim(int src) {
+    priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<>> pq;
+    long long mst_weight = 0;
+
+    pq.push({0, src});
+
+    while (!pq.empty()) {
+        auto [weight, u] = pq.top();
+        pq.pop();
+
+        if (visited[u]) continue;
+
+        visited[u] = true;
+        mst_weight += weight;
+
+        for (auto [w, v] : G[u]) {
+            if (!visited[v]) {
+                pq.push({w, v});
+            }
+        }
+    }
+
+    return mst_weight;
+}
+
+\end{lstlisting}
+
+
+\subsection{SCC using Kosaraju\’s Algo}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(n + m)
+ * Finds SCCs in a directed graph.
+ * First DFS on original graph to get finish order.
+ * Second DFS on reversed graph to identify components.
+ */
+
+int n; 
+vector<vector<int>> adj, adj_rev;
+vector<bool> used;
+vector<int> order, component;
+
+void dfs1(int v) {
+    used[v] = true;
+    for (int u : adj[v]) {
+        if (!used[u])   dfs1(u);
+    }
+    order.push_back(v);
+}
+
+void dfs2(int v) {
+    used[v] = true;
+    component.push_back(v);
+    for (int u : adj_rev[v]) {
+        if (!used[u])   dfs2(u);
+    }
+}
+
+void findSCC() {
+    used.assign(n, false);
+    order.clear();
+    // Run dfs1 on all nodes
+    for (int v = 0; v < n; v++) {
+        if (!used[v]) dfs1(v);
+    }
+
+    used.assign(n, false);
+    vector<int> roots(n);
+    vector<int> root_nodes;
+    vector<vector<int>> adj_scc(n);
+
+    for (int i = (int)order.size() - 1; i >= 0; i--) {
+        int v = order[i];
+        if (!used[v]) {
+            component.clear();
+            dfs2(v);
+
+            int root = component.front();
+            for (int u : component) {
+                roots[u] = root;
+            }
+            root_nodes.push_back(root);
+        }
+    }
+
+    // Build condensed graph of SCCs
+    for (int v = 0; v < n; v++) {
+        for (int u : adj[v]) {
+            int root_v = roots[v];
+            int root_u = roots[u];
+            if (root_u != root_v) {
+                adj_scc[root_v].push_back(root_u);
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+
+\subsection{Disjoint Set Union (DSU)}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(log n)
+ Average: Amortized O(alpha(n)), per operation (almost constant <= 4)
+ * Union by rank for optimization.
+ */
+
+class DSU {
+public:
+    vector<int> rank, parent;
+
+    DSU(int n) {
+        rank.assign(n, 0);
+        parent.assign(n, 0);
+        iota(parent.begin(), parent.end(), 0); // parent[i] = i
+    }
+
+    int findParent(int i) {
+        if (parent[i] == i) 
+            return i;
+        return parent[i] = findParent(parent[i]);
+    }
+
+    void JointSet(int i, int j) {
+        int u = findParent(i);
+        int v = findParent(j);
+        if (u == v) return; // Already in the same set
+
+        if (rank[u] > rank[v]) 
+            parent[v] = u;
+        else {
+            parent[u] = v;
+            if (rank[u] == rank[v]) 
+                rank[v]++;
+        }
+    }
+};
+\end{lstlisting}
+
+\subsection{Rollback Disjoint Set Union (RollbackDSU)}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity: O(log n)
+ * Average: Amortized O(alpha(n)), per operation (almost constant <= 4)
+ * Supports rollback to previous states.
+ */
+
+struct RollbackDSU {
+    vector<int> ps; 
+    vector<pair<int, int>> st;
+    // negative for parent itself with size 1..
+
+    RollbackDSU(int n) : ps(n, -1) {}
+
+    bool sameSet(int a, int b) {
+        return Find(a) == Find(b);
+    }
+
+    int Find(int x) { 
+        return ps[x] < 0 ? x : Find(ps[x]); 
+    }
+
+    bool Union(int a, int b) {
+        a = Find(a), b = Find(b);
+        if (a == b) return false;
+        if (ps[a] > ps[b]) swap(a, b);
+        st.push_back({a, ps[a]}); // for rollback
+        st.push_back({b, ps[b]}); // for rollback
+        ps[a] += ps[b]; 
+        ps[b] = a;
+        return true;
+    }
+
+    int getSize(int x) { 
+        return -ps[Find(x)]; 
+    }
+
+    // Use only for rollback
+    int time() { 
+        return st.size(); 
+    }
+
+    void rollback(int t) {
+        for (int i = time(); i-- > t;)
+            ps[st[i].first] = st[i].second;
+        st.resize(t);
+    }
+};
+\end{lstlisting}
+
+\subsection{Binary Lifting for LCA}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity:
+ *  - Preprocessing (DFS + Table build): O(N log N)
+ *  - Query (LCA): O(log N)
+ * Assumes 1-based indexing of nodes.
+ */
+
+class LCA {
+public:
+    int N, logN;
+    vector<vector<int>> graph, tbl;
+    vector<int> lev;
+
+    LCA(int n, vector<vector<int>> &v) {
+        N = n;
+        logN = ceil(log2(n));
+        graph = v;
+        tbl.assign(logN + 1, vector<int>(n + 1, -1));
+        lev.assign(n + 1, 0);
+        dfs(1, -1);
+    }
+
+    void dfs(int cur, int par) {
+        tbl[0][cur] = par;
+        for (int i = 1; i <= logN; i++) {
+            if (tbl[i - 1][cur] != -1) {
+                tbl[i][cur] = tbl[i - 1][tbl[i - 1][cur]];
+            }
+        }
+
+        for (auto child : graph[cur]) {
+            if (child != par) {
+                lev[child] = lev[cur] + 1;
+                dfs(child, cur);
+            }
+        }
+    }
+
+    int getKthPar(int cur, int k) {
+        for (int i = logN; i >= 0; i--) {
+            if (cur == -1) break;
+            if (k & (1 << i)) {
+                cur = tbl[i][cur];
+            }
+        }
+        return cur;
+    }
+
+    int getLCA(int u, int v) {
+        if (lev[u] > lev[v]) {
+            u = getKthPar(u, lev[u] - lev[v]);
+        } else if (lev[v] > lev[u]) {
+            v = getKthPar(v, lev[v] - lev[u]);
+        }
+
+        if (u == v) return u;
+
+        for (int i = logN; i >= 0; i--) {
+            if (tbl[i][u] != -1 && tbl[i][u] != tbl[i][v]) {
+                u = tbl[i][u];
+                v = tbl[i][v];
+            }
+        }
+        return tbl[0][u];
+    }
+};
+\end{lstlisting}
+
+
+
+
+
+
+\subsection{Heavy-Light Decomposition (Edge Weight)}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity:
+ *  - Preprocessing : O(N)
+ *  - Query/Update : O(log N)
+ * Use: Tree (Range Max Query)
+ */
+class segTree { // also can use recursive, mxN <= 1e4...
+    vector<int> sg;
+public:
+    segTree(int n) : sg(4 * n + 1) {}
+    void upd(int i, int val, int n) {
+        // iterative code
+    }
+    int qry(int lb, int rb, int n) {
+        // iterative code
+    }
+};
+
+class HeavyLight {
+    vector<vector<int>> g;
+    vector<int> u, v, depth, parents, heavy, root, start, weigth;
+    int timer;
+public:
+    HeavyLight(int n, vector<vector<int>> &graph, vector<int> &_u, vector<int> &_v, vector<int> &cost, segTree &t) {
+        g = graph;
+        u = _u; v = _v;
+        weigth.resize(n + 1, 0); depth.resize(n + 1, 0);
+        parents.resize(n + 1, 0); heavy.resize(n + 1, 0);
+        root.resize(n + 1, 0); start.resize(n + 1, 0);
+        timer = 0;
+
+        dfs(1, 0);
+        decompose(1, 0, 1);
+
+        for (int i = 1; i < n; ++i) {
+            int x = u[i];
+            int y = v[i];
+            if (parents[x] == y)
+                weigth[x] = cost[i];
+            else
+                weigth[y] = cost[i];
+        }
+        for (int i = 1; i <= n; ++i) {
+            t.upd(start[i], weigth[i], n);
+        }
+    }
+
+    int dfs(int node, int par) {
+        int subTree = 1, maxChildSize = 0;
+        depth[node] = depth[par] + 1;
+        parents[node] = par;
+
+        for (auto &child : g[node]) {
+            if (child ^ par) {
+                int childSize = dfs(child, node);
+                subTree += childSize;
+                if (childSize > maxChildSize) {
+                    maxChildSize = childSize;
+                    heavy[node] = child;
+                }
+            }
+        }
+        return subTree;
+    }
+
+    void decompose(int node, int par, int top) {
+        root[node] = top;
+        start[node] = timer++;
+        if (heavy[node])
+            decompose(heavy[node], node, top);
+        for (auto &child : g[node]) {
+            if (child != par && child != heavy[node]) {
+                decompose(child, node, child);
+            }
+        }
+    }
+
+    int getMax(int a, int b, int n, segTree &t) {
+        int ans = 0;
+        while (root[a] ^ root[b]) {
+            if (depth[root[a]] < depth[root[b]])
+                swap(a, b);
+            ans = max(ans, t.qry(start[root[a]], start[a], n));
+            a = parents[root[a]];
+        }
+        if (depth[a] > depth[b]) swap(a, b);
+        if (a != b) {
+            // start[a]+1 = (exclude LCA for Edge Weight)...
+            ans = max(ans, t.qry(start[a] + 1, start[b], n));
+        }
+        return ans;
+    }
+
+    void upd(int indx, int val, int n, segTree &t) {
+        int x = u[indx];
+        int y = v[indx];
+        if (parents[x] == y)
+            indx = start[x];
+        else
+            indx = start[y];
+        t.upd(indx, val, n);
+    }
+};
+
+void Solve() {
+    int n;
+    cin >> n;
+    vector<int> u(n + 1), v(n + 1), cost(n + 1);
+    vector<vector<int>> g(n + 1);
+    for (int i = 1; i < n; ++i) {
+        cin >> u[i] >> v[i] >> cost[i];
+        int x = u[i]; int y = v[i];
+        g[x].push_back({y});
+        g[y].push_back({x});
+    }
+
+    segTree t(n);
+    HeavyLight hld(n, g, u, v, cost, t);
+
+    while (q--) {
+        hld.getMax(L, R, n, t);
+        hld.upd(indx, val, n, t);
+    }
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+% For node based query:
+% \subsection{Heavy-Light Decomposition (HLD)}
+% \begin{lstlisting}[language=C++]
+% /**
+%  * Time Complexity:
+%  *  - Preprocessing : O(N)
+%  *  - Query/ Update : O(log N)
+%  * Use: Tree (Range Max Query)
+%  */
+% class HLD {
+%     int n, cur_pos;
+%     vector<vector<int>> g;
+%     vector<int> parent, depth, heavy, head, pos, base, val;
+%     vector<int> seg;
+
+%     int dfs(int u) {
+%         int size = 1, max_sub = 0;
+%         for (int v : g[u]) {
+%             if (v != parent[u]) {
+%                 parent[v] = u;
+%                 depth[v] = depth[u] + 1;
+%                 int sz = dfs(v);
+%                 size += sz;
+%                 if (sz > max_sub) {
+%                     max_sub = sz;
+%                     heavy[u] = v;
+%                 }
+%             }
+%         }
+%         return size;
+%     }
+
+%     void decompose(int u, int h) {
+%         head[u] = h;
+%         pos[u] = cur_pos;
+%         base[cur_pos++] = val[u];
+%         if (heavy[u] != -1)
+%             decompose(heavy[u], h);
+%         for (int v : g[u]) {
+%             if (v != parent[u] && v != heavy[u])
+%                 decompose(v, v);
+%         }
+%     }
+
+%     void build(int idx, int l, int r) {
+%         if (l == r) {
+%             seg[idx] = base[l];
+%             return;
+%         }
+%         int mid = (l + r) / 2;
+%         build(idx*2, l, mid);
+%         build(idx*2+1, mid+1, r);
+%         seg[idx] = max(seg[idx*2], seg[idx*2+1]);
+%     }
+
+%     void updateSeg(int idx, int l, int r, int p, int x) {
+%         if (l == r) {
+%             seg[idx] = x;
+%             return;
+%         }
+%         int mid = (l + r) / 2;
+%         if (p <= mid) updateSeg(idx*2, l, mid, p, x);
+%         else updateSeg(idx*2+1, mid+1, r, p, x);
+%         seg[idx] = max(seg[idx*2], seg[idx*2+1]);
+%     }
+
+%     int querySeg(int idx, int l, int r, int L, int R) {
+%         if (R < l || r < L) return INT_MIN;
+%         if (L <= l && r <= R) return seg[idx];
+%         int mid = (l + r) / 2;
+%         return max(querySeg(idx*2, l, mid, L, R),
+%                    querySeg(idx*2+1, mid+1, r, L, R));
+%     }
+
+% public:
+%     HLD(int size, vector<int> values, vector<vector<int>> &graph) {
+%         n = size;
+%         val = values;
+%         g = graph;
+%         parent.assign(n, -1);
+%         depth.assign(n, 0);
+%         heavy.assign(n, -1);
+%         head.assign(n, 0);
+%         pos.assign(n, 0);
+%         base.assign(n, 0);
+%         seg.assign(4*n, INT_MIN);
+
+%         cur_pos = 0;
+%         dfs(0);
+%         decompose(0, 0);
+%         build(1, 0, n-1);
+%     }
+
+%     void update(int u, int x) {
+%         updateSeg(1, 0, n-1, pos[u], x);
+%     }
+
+%     int query(int u, int v) {
+%         int res = INT_MIN;
+%         while (head[u] != head[v]) {
+%             if (depth[head[u]] < depth[head[v]]) swap(u, v);
+%             res = max(res, querySeg(1, 0, n-1, pos[head[u]], pos[u]));
+%             u = parent[head[u]];
+%         }
+%         if (depth[u] > depth[v]) swap(u, v);
+%         res = max(res, querySeg(1, 0, n-1, pos[u], pos[v]));
+%         return res;
+%     }
+% };
+
+% HLD hld(n, values, edges);
+% hld.query(u,v);
+% hld.update(u,x);
+% \end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Centroid Decomposition}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity:
+ *  - Preprocessing (dfs + decomposition): O(N log N)
+ *  - Each centroid level recurses on at most half the subtree.
+ * Use: Centroid Decomposition on Tree (for divide & conquer on trees)
+ */
+% Used by Din
+const int mxN = 1e5 + 9;
+vector<int> g[mxN], subTree(mxN, 0);
+vector<bool> vis(mxN, 0);
+
+void dfs(int node, int par) {
+    subTree[node] = 1;
+    for (auto &child : g[node]) {
+        if (!vis[child] && child != par) {
+            dfs(child, node);
+            subTree[node] += subTree[child];
+        }
+    }
+}
+
+int getCentroid(int node, int par, int n) {
+    for (auto &child : g[node]) {
+        if (child != par && !vis[child] && subTree[child] * 2 > n) {
+            return getCentroid(child, node, n);
+        }
+    }
+    return node;
+}
+
+void makeResult(int node, int n, vector<int> &ans, int curr_char) {
+    dfs(node, 0);
+    int centroid = getCentroid(node, 0, subTree[node]);
+    vis[centroid] = 1;
+    ans[centroid] = curr_char;
+
+    for (auto &child : g[centroid]) {
+        if (!vis[child]) {
+            makeResult(child, subTree[child], ans, curr_char + 1);
+        }
+    }
+}
+
+void solve() {
+    int n;
+    cin >> n;
+
+    for (int i = 1; i < n; ++i) {
+        int x, y;
+        cin >> x >> y;
+        g[x].push_back(y);
+        g[y].push_back(x);
+    }
+
+    vector<int> ans(n + 1);
+    makeResult(1, n, ans, 1);
+
+    for (int i = 1; i <= n; ++i) {
+        cout << char(ans[i] - 1 + 'A') << " ";
+    }
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+% Data Structure
+\section{Data Structure}
+\subsection{Binary Indexed Tree (Fenwick Tree)}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity:
+ *  - Build: O(n log n)
+ *  - Update: O(log n) (If reverse operation exists)
+ *  - Query (prefix sum): O(log n)
+ * Supports point updates and prefix sum queries.
+*/
+vector<int> bit, v;
+int n;
+
+void update(int i, int val) {
+    while (i <= n) {// 1'based
+        bit[i] += val;
+        i += (i & (-i));
+    }
+}
+ll sum(int i) {
+    ll ans = 0;
+    while (i) {
+        ans += bit[i];
+        i -= (i & (-i));
+    }
+    return ans;
+}
+ll getSum(int L, int R) {// 1'based
+    return sum(R) - sum(L-1);
+}
+// bit.assign(n + 1, 0);
+\end{lstlisting}
+\subsection{2D Fenwick Tree}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity:
+ *  - Build: O(n log n log n)
+ *  - Update: O(log n  log n)
+ *  - Query (prefix sum): O(log n  log n)
+ */
+
+vector<vector<ll>> input;
+vector<vector<ll>> Bits;
+ll n, m, q;
+
+void build(ll idxI, ll idxJ, ll val){
+    for(int row = idxI; row <= n; row += (row & (-row))){
+        int col = idxJ;
+        while(col<=m){
+            Bits[row][col] += val;
+            col += (col & (-col));
+        }
+    }
+}
+void FirstCall(ll n, ll m) {
+    Bits.assign(2*n+1, vector<ll>(2*m+1,0)); 
+}
+
+void update(ll i, ll j, ll val) {
+    build(i, j, val);
+}
+
+ll getAns(ll idxI, ll idxJ){
+    ll ans = 0;
+    for(int col = idxJ; col > 0; col -= (col & (-col))){
+        ll row = idxI;
+        while(row > 0){    
+            ans += Bits[row][col];
+            row -= (row & (-row));
+        }
+    }
+    return ans;
+}
+ll sumRange(ll a, ll b, ll x, ll y) {
+    ll upperRight = getAns(a-1, y);
+    ll lowerLeft = getAns(x, b-1);
+    ll downRight = getAns(x, y);
+    ll upperCorner = getAns(a-1, b-1);
+    return downRight+upperCorner-lowerLeft-upperRight;
+}
+\end{lstlisting}
+
+\subsection{Sparse Table}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity:
+ *  - Build: O(n log n)
+ *  - Query: O(1) for RMQ
+ * 
+ * Supports static range man, max, gcd queries on an immutable array.
+ * Uses 1-based indexing internally for convenience.
+ */
+
+class maxTable {
+public:
+    int N, logN;     
+    vector<vector<int>> tbl; 
+    vector<int> v; 
+
+    maxTable(int n, const vector<int>& v2) {
+        N = n;
+        logN = (int)log2(n);
+        v.assign(n + 1, 0);
+        for (int i = 0; i < n; i++) {
+            v[i + 1] = v2[i]; // 1-based index
+        }
+        build();
+    }
+
+    void build() {
+        tbl.assign(logN + 1, vector<int>(N + 1, 0));
+        for (int i = 1; i <= N; i++) {
+            tbl[0][i] = v[i];
+        }
+        for (int k = 1; k <= logN; k++) {
+            int intervalLen = 1 << k;
+            int halfLen = intervalLen >> 1;
+            for (int i = 1; i + intervalLen - 1 <= N; i++) {
+                tbl[k][i] = max(tbl[k - 1][i], tbl[k - 1][i + halfLen]);
+            }
+        }
+    }
+    
+    int query(int l, int r) {
+        l++; r++; // Convert to 1-based index
+        int length = r - l + 1;
+        int k = (int)log2(length);
+        int intervalLen = 1 << k;
+        return max(tbl[k][l], tbl[k][r - intervalLen + 1]);
+    }
+};
+\end{lstlisting}
+
+
+\subsection{Mo\'s Algorithm}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity:
+ *  - Build: O(n sqrt (q))
+ * Supports offline query.
+ */
+class MoAlgorithm {
+public:
+    static int sqrtN;
+    int n, q, distinct;
+    vector<int> a, ans;
+    vector<int> freq;
+    struct Query {
+        int l, r, idx;
+        bool operator<(const Query &other) const {
+            if (l / sqrtN != other.l / sqrtN)
+                return l / sqrtN < other.l / sqrtN;
+            return ((l / sqrtN) & 1) ? r > other.r : r < other.r;
+        }
+    };
+
+    vector<Query> queries;
+
+    void add(int pos) {
+        if (++freq[a[pos]] == 1)
+            distinct++;
+    }
+
+    void remove(int pos) {
+        if (--freq[a[pos]] == 0)
+            distinct--;
+    }
+
+    MoAlgorithm(const vector<int> &input, int query_count) {
+        a = input;
+        n = a.size();
+        q = query_count;
+        sqrtN = sqrt(n) + 1;
+        freq.assign(n, 0);
+        ans.assign(q, 0);
+    }
+
+    void addQuery(int l, int r, int idx) {
+        queries.push_back({l, r, idx});
+    }
+
+    vector<int> process() {
+        sort(queries.begin(), queries.end());
+
+        int currL = 0, currR = -1;
+        distinct = 0;
+        for (auto &query : queries) {
+            while (currL > query.l) add(--currL);
+            while (currR < query.r) add(++currR);
+            while (currL < query.l) remove(currL++);
+            while (currR > query.r) remove(currR--);
+            ans[query.idx] = distinct;
+        }
+
+        return ans;
+    }
+};
+int MoAlgorithm::sqrtN; // static member
+\end{lstlisting}
+
+
+
+
+
+\subsection{Segment Tree (Iterative)}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity:
+ *  - Build: O(N)
+ *  - Update + query: O(logN)
+ * Can use for min/max/xor etc.
+ */
+
+class segTree { 
+    vector<int> sg;
+public:
+    segTree(int n) : sg(4 * n + 1) {}
+
+    void upd(int i, int val, int n) {
+        // sg[i += n] = val;
+        i += n; sg[i] = val; i /= 2;
+        while (i) {
+            sg[i] = max(sg[2*i], sg[2*i+1]);
+            i /= 2;
+        }
+    }
+
+    int qry(int lb, int rb, int n) {
+        lb += n, rb += n+1;
+        int max_a = 0, max_b = 0;
+        while (lb < rb) {
+            if (lb & 1)
+                max_a = max(max_a, sg[lb++]);
+            if (rb & 1)
+                max_b = max(max_b, sg[--rb]);
+            lb /= 2, rb /= 2;
+        }
+        return max(max_a, max_b);
+    }
+};
+\end{lstlisting}
+
+
+
+
+
+\subsection{Lazy Segment Tree (Range Updates + Queries)}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity:
+ *  - Build: O(n)
+ *  - Update (range): O(log n)
+ *  - Query (range): O(log n)
+ * Uses 1-based indexing for input and segment tree.
+ */
+
+struct Node {
+    long long sum;
+    long long lazy;
+
+    Node(long long s = 0, long long lz = 0) {
+        sum = s;
+        lazy = lz;
+    }
+
+    Node operator+(const Node &other) const {
+        return Node(sum + other.sum, 0);
+    }
+
+    void apply(long long b, long long e, long long val) {
+        sum += (e - b + 1) * val;
+        lazy += val;
+    }
+};
+
+struct LazySegTree {
+    vector<Node> tree;
+    long long n;
+
+    LazySegTree(long long size, const vector<long long>& data) {
+        n = size;
+        tree.assign(4 * (n + 5), Node());
+        build(1, 1, n, data);
+    }
+
+    void build(long long id, long long l, long long r, const vector<long long>& data) {
+        if (l == r) {
+            tree[id] = Node(data[l]);
+            return;
+        }
+        long long mid = (l + r) / 2;
+        build(2 * id, l, mid, data);
+        build(2 * id + 1, mid + 1, r, data);
+        tree[id] = tree[2 * id] + tree[2 * id + 1];
+    }
+
+    void push(long long id, long long l, long long r) {
+        if (tree[id].lazy == 0) return;
+        long long mid = (l + r) / 2;
+        tree[2 * id].apply(l, mid, tree[id].lazy);
+        tree[2 * id + 1].apply(mid + 1, r, tree[id].lazy);
+        tree[id].lazy = 0;
+    }
+
+    void update(long long id, long long l, long long r, long long a, long long b, long long val) {
+        if (b < l || a > r) return; 
+        if (a <= l && r <= b) {
+            tree[id].apply(l, r, val);
+            return;
+        }
+        push(id, l, r);
+        long long mid = (l + r) / 2;
+        update(2 * id, l, mid, a, b, val);
+        update(2 * id + 1, mid + 1, r, a, b, val);
+        tree[id] = tree[2 * id] + tree[2 * id + 1];
+    }
+
+    Node query(long long id, long long l, long long r, long long a, long long b) {
+        if (b < l || a > r) return Node(); 
+        if (a <= l && r <= b) return tree[id];
+        push(id, l, r);
+        long long mid = (l + r) / 2;
+        return query(2 * id, l, mid, a, b) + query(2 * id + 1, mid + 1, r, a, b);
+    }
+};
+// Example
+void solve() {
+    vector<long long> input(n + 1);  
+    LazySegTree T(n, input);
+    T.update(1, 1, n, l, r, val);
+    cout << T.query(1, 1, n, idx, idx).sum << "\n";
+}
+\end{lstlisting}
+
+
+
+
+%Dynamic Programming
+\section{Dynamic Programming}
+\subsection{Coin Change (Number of Ways)}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \textbf{Time Complexity:} \(O(n \cdot \text{sum}), \textbf{Space:} O(\text{sum})\)
+\end{itemize}
+\begin{lstlisting}[language=C++]
+int coinChangeBottomUp(vector<int>& coins, int sum) {
+    vector<int> dp(sum + 1, 0);
+    dp[0] = 1;
+    for (int coin : coins) {
+        for (int i = coin; i <= sum; i++) {
+            dp[i] += dp[i - coin];
+        }
+    }
+    return dp[sum];
+}
+\end{lstlisting}
+\textbf{Time:} $O(n \cdot \text{sum})$, \textbf{Space:} $O(\text{sum})$
+
+\vspace{10pt}
+
+\subsection{0/1 Knapsack}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \textbf{Time Complexity:} \(O(n \cdot W), \textbf{Space:} O(n \cdot W)\)
+\end{itemize}
+\begin{lstlisting}[language=C++]
+int knapSack(int W, int wt[], int val[], int n) {
+    int dp[W + 1];
+    memset(dp, 0, sizeof(dp));
+    
+    for (int i = 1; i <= n; i++) {
+        for (int w = W; w >= 0; w--) {
+            if (wt[i - 1] <= w)
+                dp[w] = max(dp[w], dp[w - wt[i - 1]] + val[i - 1]);
+        }
+    }
+    return dp[W];
+}
+\end{lstlisting}
+
+
+\subsection{Bitmask DP – Assignment Problem}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \textbf{Time:} \(O(n \cdot 2 ^ n),\ \textbf{Space:} O(n \cdot 2 ^ n)\)
+\end{itemize}
+\begin{lstlisting}[language=C++]
+int n;
+vector<vector<int>> v(17, vector<int>(17, 0));
+vector<vector<int>> dp(17, vector<int>(1 << 16, -1));
+
+int getDP(int row, int BitVal) {
+    if (row >= n) return 0;
+
+    if (dp[row][BitVal] != -1)
+        return dp[row][BitVal];
+
+    int mx = 0;
+    for (int i = 0; i < n; i++) {
+        int mask = (1 << i);
+        if (BitVal & mask) {
+            mx = max(mx, v[row][i] + getDP(row + 1, BitVal - mask));
+        }
+    }
+
+    return dp[row][BitVal] = mx;
+}
+
+void solve() {
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            cin >> v[i][j];
+
+    int ans = getDP(0, (1 << n) - 1);
+    cout << ans << endl;
+}
+\end{lstlisting}
+
+\textbf{Problem:} Find the maximum sum of pairings from an $n \times n$ matrix where each row must be assigned a unique column.
+
+\subsection{DP with Prefix Sum}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \textbf{Time:} \(O(n \cdot x),\ \textbf{Space:} O(x)\)
+\end{itemize}
+\begin{lstlisting}[language=C++]
+ll mod = 1e9+7;
+vector<ll> dp;
+vector<ll> pref;
+
+ll prefDP(ll n, ll x, vector<ll> &v){
+    dp.assign(x+1, 0);
+    pref.assign(x+1, 1);
+    dp[0] = 1;
+    for(int i = 1; i <= n; i++){
+        for(int k = 1; k <= x; k++){    
+            dp[k] = pref[k];
+            ll left = max(k - v[i], 0ll);
+            if(left > 0){
+                dp[k] -= pref[left - 1];
+            }
+            dp[k] = (dp[k] + mod) % mod;
+        }
+        for(int i = 1; i <= x; i++){
+            pref[i] = (pref[i - 1] + dp[i]) % mod;
+        }   
+    }
+    return dp[x];
+}
+\end{lstlisting}
+
+
+\subsection{Longest Increasing Subsequence}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \textbf{Time Complexity:} \(O(n \log n)\)
+  \item \textbf{Space Complexity:} \(O(n)\)
+\end{itemize}
+
+\begin{lstlisting}[language=C++]
+\\ Time Complexity: O(n log n)
+void solve(){
+    ll n;
+    cin >> n;
+    ll arr[n];
+    for(int i = 0; i < n; i++)
+        cin >> arr[i];
+
+    vector<ll> v;
+    v.push_back(arr[0]);
+
+    for(int i = 1; i < n; i++){
+        if(arr[i] > v.back())
+            v.push_back(arr[i]);
+        else {
+            int ind = lower_bound(v.begin(), v.end(), arr[i]) - v.begin();
+            v[ind] = arr[i];
+        }
+    }
+    cout << v.size() << endl;
+}
+\end{lstlisting}
+
+\subsection{Longest Common Subsequence}
+\begin{itemize}[left=0pt, itemsep=0pt]
+  \item \textbf{Time Complexity:} $O(m \times n)$
+  \item \textbf{Space Complexity:} $O(m \times n)$
+\end{itemize}
+\begin{lstlisting}[language=C++]
+int lcs(string X, string Y, int m, int n) {
+    int L[m + 1][n + 1];
+    for (int i = 0; i <= m; i++) {
+        for (int j = 0; j <= n; j++) {
+            if (i == 0 || j == 0)
+                L[i][j] = 0;
+            else if (X[i - 1] == Y[j - 1])
+                L[i][j] = L[i - 1][j - 1] + 1;
+            else
+                L[i][j] = max(L[i - 1][j], L[i][j - 1]);
+        }
+    }
+    return L[m][n]; //length
+}
+\end{lstlisting}
+
+
+
+\section{String Algorithm}
+\subsection{KMP String Matching}
+\begin{lstlisting}[language=C++]
+\\ Time Complexity: O(N + M)
+class KMP {
+public:
+    int M;
+    vector<int> lps;
+    string pat;
+
+    KMP(string &s) {
+        M = s.size();
+        pat = s;
+        lps.assign(M, 0);
+        computeLPSArray();
+    }
+
+    void computeLPSArray() {
+        int len = 0, i = 1;
+        while (i < M) {
+            if (pat[i] == pat[len]) {
+                len++;
+                lps[i++] = len;
+            } else {
+                if (len != 0) len = lps[len - 1];
+                else lps[i++] = 0;
+            }
+        }
+    }
+
+    void search(string &txt) {
+        int N = txt.size(), i = 0, j = 0;
+        while ((N - i) >= (M - j)) {
+            if (pat[j] == txt[i]) { i++; j++; }
+            if (j == M) {
+                cout << i - j << endl;
+                j = lps[j - 1];
+            } else if (i < N && pat[j] != txt[i]) {
+                if (j != 0) j = lps[j - 1];
+                else i++;
+            }
+        }
+    }
+};
+
+// Usage:
+KMP kmp(pat);
+kmp.search(txt);
+\end{lstlisting}
+
+\subsection{String Hashing}
+\begin{lstlisting}[language=C++]
+/**
+ * Time Complexity:
+ *  - Preprocessing: O(n)
+ *  - Substring hash query: O(1)
+ * Uses 1-based indexing for hashes.
+ */
+
+
+#include <random>
+#include <chrono>
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+
+vector<int> primes = {
+    1000003, 1000033, 1000037, 1000039, 1000081,
+    1000099, 1000117, 1000121, 1000133, 1000151
+};
+
+void shuffleBase() {
+    shuffle(primes.begin(), primes.end(), rng);
+}
+
+class Hashing {
+public:
+    int base, len;           
+    const int Mod = 1e9 + 7; 
+    vector<long long> pw, Hash;
+
+    Hashing(string &str) {
+        base = primes[0]; 
+        len = (int)str.size();
+        Hash.assign(len + 1, 0);
+        pw.assign(len + 1, 0);        
+        pw[0] = 1;
+        for (int i = 1; i <= len; i++) {
+            pw[i] = (pw[i - 1] * base) % Mod;
+        }
+        generateHash(str);
+    }
+    
+    void generateHash(string &str) {
+        long long hash_val = 0;
+        for (int i = 0; i < len; i++) {
+            hash_val = (hash_val * base + str[i]) % Mod;
+            Hash[i + 1] = hash_val;
+        }
+    }
+
+    // Get hash of substring [l, r] (1-based indexing)
+    long long substringHash(int l, int r) {
+        long long hash_val = Hash[r] - (Hash[l - 1] * pw[r - l + 1]) % Mod;
+        if (hash_val < 0) hash_val += Mod;
+        return hash_val;
+    }
+
+};
+\end{lstlisting}
+\small{
+\textbf{Approaches:}
+
+\begin{itemize}
+  \item \textit{Distinct substrings} (\(O(n^2)\)): Insert \(\text{hash}(L,R)\) for all substrings into a set; answer = set size.
+  \item \textit{Longest Common Prefix} (\(O(\log n)\)): Binary search \(R\) where \(s_1.\text{hash}[1..R] = s_2.\text{hash}[1..R]\).
+  \item \textit{Lexicographically smaller} (\(O(\log n)\)): Use LCP to find \(R\), then check if \(s_1.\text{hash}[R+1] > s_2.\text{hash}[R+1]\).
+\end{itemize}
+}
+
+
+\subsection{Dynamic String Hashing}
+\begin{lstlisting}
+#define ull unsigned long long
+struct Hash {
+    ull x;
+    Hash(ull x = 0) : x(x) {};
+    Hash operator+(Hash op) {
+        return x + op.x + (x + op.x < x);
+    }
+    Hash operator-(Hash op) {
+        return *this + ~op.x;
+    }
+    Hash operator*(Hash op) {
+        auto m = (__uint128_t) x * op.x;
+        return Hash((ull) m) + (ull) (m >> 64);
+    }
+    ull get() const {
+        return x + !~x;
+    }
+    bool operator==(Hash op) {
+        return get() == op.get();
+    }
+    friend ostream& operator<<(ostream& out, Hash &op) {
+        return out << op.x;
+    }
+};
+
+static const Hash prime = (ll) 1e11 + 3;
+
+class dynamicHash {
+    vector<Hash> pw, hsh, tree;
+    int n;
+public:
+    dynamicHash(string &s) {
+        this->n = s.size();
+        hsh.resize(n + 1); pw = hsh;
+        tree.resize(4 * n + 1);
+
+        pw[0] = 1;
+        for (int i = 1; i <= n; ++i) {
+            pw[i] = pw[i - 1] * prime;
+        }
+        for (int i = 1; i <= n; ++i) {
+            update(i, s[i - 1]);
+        }
+    }
+
+    void update(int idx, char val, int s, int e, int node = 1) {
+        if (s == e) tree[node] = val;
+        else {
+            int mid = (s + e) / 2;
+            if (idx <= mid)
+                update(idx, val, s, mid, 2 * node);
+            else
+                update(idx, val, mid + 1, e, 2 * node + 1);
+            tree[node] = tree[2 * node] * pw[e - mid] + tree[2 * node + 1];
+        }
+    }
+
+    void update(int idx, char val) {
+        update(idx, val, 1, n);
+    }
+
+    pair<Hash, int> query(int lb, int rb, int s, int e, int i = 1) {
+        if (s > rb || e < lb) return {0, 0};
+        if (s >= lb && e <= rb) return {tree[i], e - s + 1};
+        int mid = (s + e) / 2;
+        auto left = query(lb, rb, s, mid, 2 * i);
+        auto right = query(lb, rb, mid + 1, e, 2 * i + 1);
+        int k = right.second;
+        Hash ans = left.first * pw[k] + right.first;
+        int len = left.second + right.second;
+        return {ans, len};
+    }
+    Hash query(int a, int b) {
+        return query(a, b, 1, n).first;
+    }
+};
+\end{lstlisting}
+    
+% \begin{lstlisting}[language=C++]
+% /**
+%  * Time Complexity:
+%  *  - Build: O(n)
+%  *  - Update: O(log n)
+%  *  - Query (substring hash): O(log n)
+%  * Uses 1-based indexing for segment tree and hashing.
+%  * Supports double hashing for collision reduction.
+%  */
+% struct dynamicHash {
+%     const long long poww = 1e9+7;
+%     const long long x = 1e6;
+
+%     vector<long long> power, arr, tree;
+
+%     dynamicHash(string &s) {
+%         ll n = (ll)s.size() + 1;
+%         power.resize(n);
+%         arr.resize(n);
+%         tree.resize(4*n);
+
+%         power[0] = 1; 
+%         for (ll i = 1; i < n; i++) {
+%             power[i] = (power[i - 1] * x) % poww;
+%         }
+%         for (ll i = 0; i < (ll)s.size(); i++) {
+%             arr[i + 1] = s[i];
+%         }
+%         build(1, 1, (ll)s.size());
+%     }
+
+%     void build(ll id, ll l, ll r) {
+%         if (l == r) {
+%             tree[id] = arr[l];
+%             return;
+%         }
+%         ll mid = (l + r) / 2;
+%         build(2*id, l, mid);
+%         build(2*id+1, mid+1, r);
+%         tree[id] = (tree[2*id] * power[r - mid] + tree[2*id + 1]) % poww;
+%     }
+
+%     void update(ll id, ll l, ll r, ll pos, char val) {
+%         if (l == r) {
+%             tree[id] = val;
+%             return;
+%         }
+%         ll mid = (l + r) / 2;
+%         if (pos <= mid)
+%             update(2*id, l, mid, pos, val);
+%         else
+%             update(2*id+1, mid+1, r, pos, val);
+
+%         tree[id] = (tree[2*id] * power[r - mid] + tree[2*id + 1]) % poww;
+%     }
+
+%     pair<long long, ll> query(ll id, ll l, ll r, ll a, ll b) {
+%         if (l > b || r < a) return {0, 0};
+%         if (l >= a && r <= b) return {tree[id], r - l + 1};
+%         ll mid = (l + r) / 2;
+%         auto left = query(2*id, l, mid, a, b);
+%         auto right = query(2*id+1, mid+1, r, a, b);
+%         long long combined = (left.first * power[right.second] + right.first) % poww;
+%         return {combined, left.second + right.second};
+%     }
+
+%     long long queryCall(ll id, ll l, ll r, ll a, ll b) {
+%         auto p = query(id, l, r, a, b);
+%         return p.first;
+%     }
+% };
+% \end{lstlisting}
+
+\subsection{Trie Data Structure}
+\begin{lstlisting}[language=C++]
+/*
+Features:
+- Insert words
+- Search exact word
+- Count words equal to a given word
+- Count words starting with a prefix
+- Erase a word
+- Check if any word starts with a prefix
+Time Complexity: O(length of word) per operation.
+*/
+
+struct Node {
+    Node* links[26];
+    bool is_end = false;
+    int cntEndWith = 0, cntPrefix = 0;
+
+    Node() {
+        for (int i = 0; i < 26; ++i) links[i] = nullptr;
+    }
+
+    bool ContainsKey(char ch) { return links[ch - 'a'] != nullptr; }
+    void Put(char ch, Node* node) { links[ch - 'a'] = node; }
+    Node* getNext(char ch) { return links[ch - 'a']; }
+    void setEnd() { is_end = true; }
+    bool isEnd() { return is_end; }
+    void increaseCntEnd() { cntEndWith++; }
+    void increasePrefix() { cntPrefix++; }
+    void deleteEnd() { cntEndWith--; }
+    void decreasePrefix() { cntPrefix--; }
+    int getCntEnd() { return cntEndWith; }
+    int getCntPrefix() { return cntPrefix; }
+};
+
+class Trie {
+private:
+    Node* root;
+
+    void clear(Node* node) {
+        if (!node) return;
+        for (int i = 0; i < 26; ++i) {
+            if (node->links[i]) {
+                clear(node->links[i]);
+            }
+        }
+        delete node;
+    }
+
+public:
+    Trie() { root = new Node(); }
+    ~Trie() { clear(root); }
+
+    void Insert(string& word) {
+        Node* node = root;
+        for (char ch : word) {
+            if (!node->ContainsKey(ch)) {
+                node->Put(ch, new Node());
+            }
+            node = node->getNext(ch);
+            node->increasePrefix();
+        }
+        node->setEnd();
+        node->increaseCntEnd();
+    }
+
+    bool Search(string& word) {
+        Node* node = root;
+        for (char ch : word) {
+            if (!node->ContainsKey(ch)) return false;
+            node = node->getNext(ch);
+        }
+        return node->isEnd();
+    }
+
+    int countWordEqualTo(string& word) {
+        Node* node = root;
+        for (char ch : word) {
+            if (!node->ContainsKey(ch)) return 0;
+            node = node->getNext(ch);
+        }
+        return node->getCntEnd();
+    }
+
+    int countWordStartWith(string& prefix) {
+        Node* node = root;
+        for (char ch : prefix) {
+            if (!node->ContainsKey(ch)) return 0;
+            node = node->getNext(ch);
+        }
+        return node->getCntPrefix();
+    }
+
+    void eraseWord(string& word) {
+        if (!Search(word)) return;
+        Node* node = root;
+        for (char ch : word) {
+            node = node->getNext(ch);
+            node->decreasePrefix();
+        }
+        node->deleteEnd();
+    }
+
+    bool StartWith(string& prefix) {
+        Node* node = root;
+        for (char ch : prefix) {
+            if (!node->ContainsKey(ch)) return false;
+            node = node->getNext(ch);
+        }
+        return true;
+    }
+};
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \newpage
+% Game Theory starts here
+\section{Game Theory}
+
+\subsection{Basic Concepts}
+\begin{itemize}[left=0pt, itemsep=5pt]
+    \item \textbf{Impartial Game:} Legal moves depend only on the state, not on who is playing.
+    \item \textbf{Sequential:} Players take alternate turns.
+    \item \textbf{Winning State:} If it can give opponent a losing state.
+    \item \textbf{Losing State:} If from this only winning states can be given to opponent.
+    \item \textbf{Strategy:} Move to a losing state for opponent.
+    \item \textbf{Example:}
+    
+    \textbf{Rules:} Remove 1, 2, or 3 stones. Last move wins.
+    
+    \vspace{0.5em}
+    \begin{center}
+    \begin{tabular}{ccccccccc}
+    \toprule
+    \textbf{State} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+    \midrule
+    \textbf{Type}  & L & W & W & W & L & W & W & W \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+\end{itemize}
+
+\textbf{Pattern:} Losing states every 4 steps (0,4,8,...)
+
+\vspace{1em}
+
+\subsection{Standard Nim Game}
+\noindent
+\textbf{Rules:} \( n \) piles, remove any number from one pile. Last move wins.
+
+\vspace{0.5em}
+\noindent
+\textbf{Strategy:}
+\begin{itemize}[left=0pt, itemsep=5pt]
+    \item Compute XOR sum of all piles.
+    \item If XOR \(\neq 0\), first player wins.
+    \item Else, first player loses.
+\end{itemize}
+
+\vspace{0.5em}
+
+\noindent
+\textbf{Example:}
+\begin{itemize}[left=0pt, itemsep=3pt]
+    \item Piles = \{5, 7, 13, 9\}
+    \item XOR = \(5 \oplus 7 \oplus 13 \oplus 9 = 6 \Rightarrow\) Win
+    \item Make a move to make the XOR 0, which creates a losing state for the opponent (e.g., \(13 \rightarrow 11\)).
+\end{itemize}
+
+\vspace{1em}
+
+\subsection{Mis\`ere Nim}
+\noindent
+\textbf{Rules:} Last move loses.
+
+\vspace{0.5em}
+\noindent
+\textbf{Strategy:}
+\begin{itemize}[left=0pt, itemsep=3pt]
+    \item All piles 1: Even count \(\Rightarrow\) Win, Odd \(\Rightarrow\) Lose.
+    \item Otherwise: Standard Nim strategy.
+\end{itemize}
+
+\vspace{1em}
+
+\subsection{Bogus Nim}
+\noindent
+\textbf{Rules:} Players have pockets of stones they can use. Last move wins.
+
+\vspace{0.5em}
+\noindent
+\textbf{Strategy:} Pockets are irrelevant. Solve using normal XOR.
+
+\vspace{1em}
+
+\subsection{Staircase Nim}
+\noindent
+\textbf{Rules:} Coins can be moved from stair \(i\) to \(i-1\). Coins on stair 1 are removed.
+
+\vspace{0.5em}
+\noindent
+\textbf{Strategy:} Only odd-numbered stairs matter. Treat them as Nim piles.
+
+\vspace{1em}
+
+\subsection{Sprague-Grundy Theorem}
+\noindent
+\textbf{Theory:} Every impartial game is equivalent to a Nim game using Grundy numbers.
+
+\vspace{0.5em}
+\noindent
+\textbf{Grundy Number:} Minimum Excludant (MEX) of all reachable states' Grundy numbers.
+
+\vspace{0.5em}
+\noindent
+\textbf{Rule:}
+\begin{itemize}[left=0pt, itemsep=3pt]
+    \item Compute Grundy numbers for all piles.
+    \item XOR them.
+    \item If result \(\neq 0\), first player wins.
+\end{itemize}
+
+\vspace{0.5em}
+\noindent
+\textbf{Example (remove up to half):}
+\begin{itemize}[left=0pt, itemsep=3pt]
+    \item \(g(0) = 0, g(1) = \text{MEX}\{0\} = 1, g(2) = \text{MEX}\{1\} = 0\)
+    \item Grundy\{5,2,1,4\} = \{0,0,1,2\} \(\Rightarrow\) XOR = 3 \(\Rightarrow\) Win
+\end{itemize}
+
+\vspace{1em}
+
+\subsection{Pile Splitting Game}
+\noindent
+\textbf{Rules:} Split a pile into two unequal parts.
+
+\vspace{0.5em}
+
+\noindent
+\textbf{Strategy:} Grundy number of pile \(n\) is:  
+\begin{align*}
+g(n) = \text{MEX}\{g(i) \oplus g(n - i)\}, \quad 1 \leq i < \frac{n}{2}
+\end{align*}
+
+\noindent
+\textbf{Example:}  
+\begin{align*}    
+    g(5) = \text{MEX}\{g(1) \oplus g(4),\ g(2) \oplus g(3)\}
+\end{align*}
+
+\vspace{1em}
+
+\subsection{Grundy + XOR (Multiple Games)}
+\noindent
+\textbf{Theorem:} Total Grundy number of a game = XOR of Grundy numbers of subgames.
+
+\vspace{0.5em}
+\noindent
+\textbf{Win:} If XOR \(\neq 0\), first player wins.
+
+\vspace{1em}
+
+\subsection{Green Hackenbush (Graph Game)}
+\noindent
+\textbf{Concept:} Tree/graph game where players remove edges.
+
+\vspace{0.5em}
+\noindent
+\textbf{Strategy:}  
+\begin{align*}
+g(\text{node}) = \left(g(\text{child}_1) \oplus g(\text{child}_2) \oplus \cdots \right) + 1
+\end{align*}
+\textit{(Depends on variant)}
+
+\vspace{1em}
+
+\subsection{Beatty's Theorem and Wythoff's Game}
+
+\textbf{Beatty Sequence:}  
+For an irrational number \(r > 1\), the Beatty sequence \(B_r\) is defined as:  
+\[
+B_r = \{\lfloor n r \rfloor \mid n = 1, 2, 3, \ldots \}
+\]
+
+\vspace{0.5em}
+
+\textbf{Beatty's Theorem:}  
+If \(r, s > 1\) are irrational numbers such that  
+\[
+\frac{1}{r} + \frac{1}{s} = 1,
+\]
+then the Beatty sequences \(B_r\) and \(B_s\) partition the positive integers without overlap, i.e., every positive integer appears exactly in one of these sequences.
+
+\vspace{1em}
+
+\textbf{Wythoff's Game:} Two piles. Remove any number from one pile or the same number from both piles. Losing positions follow Beatty sequences.
+
+\vspace{0.5em}
+
+\textbf{Losing Positions:}  
+The losing states are given by pairs:  
+\[
+(A_n, B_n) = \left( \left\lfloor n \phi \right\rfloor, \left\lfloor n \phi^2 \right\rfloor \right),
+\]
+where \(\phi = \frac{1 + \sqrt{5}}{2} \approx 1.618\) (the golden ratio).
+
+\vspace{0.5em}
+\noindent
+\textbf{Example:}  
+For \(n = 1, 2, 3\):  
+\[
+\begin{aligned}
+(A_1, B_1) &= (\lfloor 1 \times 1.618 \rfloor, \lfloor 1 \times 2.618 \rfloor) = (1, 2), \\
+(A_2, B_2) &= (\lfloor 2 \times 1.618 \rfloor, \lfloor 2 \times 2.618 \rfloor) = (3, 5), \\
+(A_3, B_3) &= (\lfloor 3 \times 1.618 \rfloor, \lfloor 3 \times 2.618 \rfloor) = (4, 7).
+\end{aligned}
+\]
+
+These pairs represent losing positions where the player to move will lose with optimal play.
+
+\vspace{1em}
+
+\subsection{Other Useful Games}
+\begin{itemize}[left=0pt, itemsep=3pt]
+    \item \textbf{Take-Away Game:} Remove 1 to \(k\) stones. Last move wins. Losing positions repeat every \((k+1)\).
+    \item \textbf{Kayles Game:} Remove 1 or 2 adjacent pins. Uses Sprague-Grundy theorem.
+\end{itemize}
+
+\vspace{1em}
+
+\subsection{Techniques Summary}
+\begin{itemize}[left=0pt, itemsep=3pt]
+    \item \textbf{Brute Force:} Try small states to find patterns.
+    \item \textbf{Use MEX:} When computing Grundy numbers for a single pile.
+    \item \textbf{Use XOR:} When combining multiple independent games.
+    \item \textbf{Use Large constraint:} Calculate for little constraint and then find pattern.
+    \item \textbf{For pattern: } Calculate by mod for large constraint.
+    \begin{lstlisting}[language=C++]   
+    if(x >= minMatchInd){
+        set<int> patIndex = {0, 12, 16, 30}; //midMatchInd = 0;
+        int mod = HighMatchInd - minMatchInd;
+        int newInd = (x - minMatchInd) % mod; 
+        if(patIndex.find(newInd)==patInd.end()){
+            //Win
+        }
+    }
+    \end{lstlisting}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \newpage
+
+
+\section{Testing}
+\subsection{Generate Random}
+\begin{lstlisting}
+srand(time(0));
+double getDouble(double lb, double ub)
+{
+   double x = lb + static_cast<double>(rand()) / RAND_MAX * (ub - lb);
+   return x;
+}
+ll getInt(ll lb, ll rb)
+{
+   ll n = (rand() % (ub - lb + 1)) + lb;
+   return n;
+}
+\end{lstlisting}
+
+\subsection{Tree generator}
+\begin{lstlisting}[language=Python]
+#define pbds tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update>
+
+void treeTCgenerator()
+{
+   ll numberOfNodes = getInt(1, 30);
+   ll distance = getInt(1, numberOfNodes);
+   srand(time(0));
+   cout << numberOfNodes << "\n";
+   pbds includedInTree;
+   pbds notIncludedInTree;
+
+   ll root = 1;
+
+   includedInTree.insert(root);
+
+   for (ll i = 1; i <= numberOfNodes; i++)
+   {
+      if (i != root)
+      {
+         notIncludedInTree.insert(i);
+      }
+   }
+
+   for (ll i = 0; i < numberOfNodes - 1; i++)
+   {
+      ll incSize = includedInTree.size();
+      ll r = getInt(0, incSize - 1);
+      auto itU = includedInTree.find_by_order(r);
+      ll u = *itU;
+
+      ll notIncSize = notIncludedInTree.size();
+      r = getInt(0, notIncSize - 1);
+      auto itV = notIncludedInTree.find_by_order(r);
+      ll v = *itV;
+
+      notIncludedInTree.erase(itV);
+      includedInTree.insert(v);
+
+      cout << u << " " << v << "\n";
+   }
+}
+\end{lstlisting}
+
+\subsection{Stress Testing Script}
+\begin{lstlisting}[language=bash]
+# stressTesting.sh
+
+for ((testNum=0; testNum<$4; testNum++))
+do
+    ./$3 > input               
+    ./$2 < input > outSlow          
+    ./$1 < input > outWrong         
+    if ! cmp -s "outWrong" "outSlow"
+    then
+        echo "Error found on test #$testNum"
+        echo "Input:"
+        cat input
+        echo "Wrong Output:"
+        cat outWrong
+        echo "Correct Output:"
+        cat outSlow
+        exit 1
+    fi
+done
+echo "Passed $4 tests"
+\end{lstlisting}
+
+\vspace{0.5em}
+
+\begin{lstlisting}[language=bash]
+# runStress file
+
+g++ -o generator generator.cpp
+g++ -o correctSolution correctSolution.cpp
+g++ -o mySolution mySolution.cpp
+chmod +x stressTesting.sh
+numTests=${1:-20}
+
+./stressTesting.sh mySolution correctSolution generator $numTests
+\end{lstlisting}
+
+
+\small{
+\textbf{Notes:}
+\begin{itemize}[left=0pt, itemsep=0pt]
+    \item Create three files: \texttt{generator.cpp}, \texttt{correctSolution.cpp}, and \texttt{mySolution.cpp}.
+    \item To run the stress test with 100 tests, use:
+    \begin{verbatim}
+    ./runStress 100
+    \end{verbatim}
+\end{itemize}
+}
+
+\subsection{Python Basic syntax}
+\begin{lstlisting}[language=Python]
+import sys
+from collections import deque, defaultdict
+import heapq
+import time
+
+# Uncomment to use file i/o for debugging
+# sys.stdin = open("template/input.txt", "r")
+# sys.stdout = open("template/output.txt", "w")
+# sys.stderr = open("template/error.txt", "w")
+
+x = int(input())
+v = list(map(int, input().split()))
+
+mn = v[0]
+
+# Finding minimum value in list
+for i in v:
+    if mn > i:
+        mn = i
+
+# Sorting the list
+v.sort()
+print("Sorted list:", v)
+
+# Delete entire list
+del my_list
+my_list.clear()
+
+# Delete by index
+del my_list[2]
+my_list.pop(2)
+my_list.pop() //last indx
+
+# Delete first occured element
+my_list.remove(3) 
+
+# Using set to remove duplicates
+unique_values = set(v)
+print("Unique values in the list:", unique_values)
+
+# Queue operations (using deque)
+queue = deque(v)
+print("Initial queue:", queue)
+queue.append(10)  # Enqueue
+print("Queue after enqueue:", queue)
+queue.popleft()  # Dequeue
+print("Queue after dequeue:", queue)
+
+# Stack operations (using list)
+stack = []
+stack.append(5)  # Push
+stack.append(10)
+print("Stack after pushes:", stack)
+stack.pop()  # Pop
+print("Stack after pop:", stack)
+
+# Using defaultdict for frequency count
+freq = defaultdict(int)
+for num in v:
+    freq[num] += 1
+print("Frequency of elements:", dict(freq))
+
+# List comprehension to get even numbers
+even_numbers = [x for x in v if x % 2 == 0]
+print("Even numbers from the list:", even_numbers)
+
+# Heap operations (using heapq)
+heapq.heapify(v)
+print("Min-heap:", v)
+smallest = heapq.heappop(v)
+print("Popped smallest element:", smallest)
+
+# Lambda function for custom sorting
+v.sort(key=lambda x: abs(x))
+print("List sorted by absolute values:", v)
+
+# Time taken for sorting
+start_time = time.time()
+v.sort()
+end_time = time.time()
+print(f"Time taken to sort the list: {end_time - start_time} seconds")
+
+# Print minimum element
+for i in range(0,x):
+    print(f"here x : {x}",file=sys.stderr)
+
+print(mn)
+
+
+
+\end{lstlisting}
+
+
+
+
+
+\end{multicols}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\begin{multicols}{3}
+\section*{Techniques}
+
+\begin{lstlisting}
+1. Core Paradigms
+
+- Greedy:
+  Pick best local choice -> global solution.
+  Needs correctness proof.
+  Examples: Activity Selection, Huffman, Dijkstra.
+
+- Divide and Conquer:
+  Split -> Solve recursively -> Combine.
+  Examples: Merge Sort, Closest Pair, Karatsuba.
+
+- Dynamic Programming (DP):
+  Overlapping subproblems + store results.
+  Types: Classic, Bitmask DP, Tree DP, Optimized (CHT, Knuth-Yao).
+  Examples: Knapsack, LCS, LIS.
+
+- Search + Pruning:
+  Backtracking with early cut-off.
+  Techniques: Meet-in-the-Middle (O(2^{N/2})), A* Search.
+
+
+2. Graph Algorithms
+
+- BFS / DFS:
+  O(V+E), for reachability, paths, cycles.
+
+- Shortest Paths:
+  Dijkstra (non-negative weights, O(E log V)),
+  Bellman-Ford (negatives allowed, O(VE)),
+  Floyd-Warshall (all pairs, O(V^3)).
+
+- Minimum Spanning Tree (MST):
+  Kruskal (with DSU), Prim.
+
+- SCC, 2-SAT:
+  Kosaraju/Tarjan for SCCs, implication graph for 2-SAT.
+
+
+3. Data Structures
+
+- Fenwick Tree (BIT):
+  O(log N) point update and prefix query.
+
+- Segment Tree:
+  Range queries + lazy updates in O(log N).
+
+- Disjoint Set Union (DSU):
+  Near-constant time union/find with path compression.
+
+- Trie:
+  Efficient prefix storage, O(L) per operation.
+
+- Sparse Table:
+  Static range queries in O(1) after O(N log N) preprocessing.
+
+- Heavy-Light / Centroid Decomposition:
+  Tree decompositions for path and subtree queries.
+
+
+4. String Algorithms
+
+- KMP:
+  Pattern matching in O(N+M).
+
+- Rolling Hash:
+  Substring comparison in O(1) after preprocessing.
+
+- Suffix Array + LCP:
+  Sorted suffixes for substring problems.
+
+- Aho-Corasick, Trie:
+  Multiple pattern matching efficiently.
+
+
+5. Math & Number Theory
+
+- Modular Arithmetic:
+  Use modular inverse (Fermat / Extended Euclid), exponentiation.
+
+- GCD + Extended Euclid:
+  For inverses and Chinese Remainder Theorem.
+
+- Sieve of Eratosthenes:
+  Prime generation in O(N log log N).
+
+- Binomial Coefficients:
+  Precompute factorials and inverses.
+
+- CRT, Euler's Totient:
+  Solve modular systems, count coprimes.
+
+- Miller-Rabin, Pollard's Rho:
+  Fast primality test and factorization.
+
+
+6. Computational Geometry
+
+- Vector Operations:
+  Cross product for orientation and area.
+
+- Convex Hull:
+  Graham Scan / Monotone Chain, O(N log N).
+
+- Line Sweep:
+  Process geometric events efficiently.
+
+- Closest Pair:
+  Divide and conquer O(N log N) solution.
+
+
+7. Game Theory
+
+- Nim Game:
+  XOR piles, winning if XOR != 0.
+
+- Grundy Number:
+  g(S) = MEX{ g(S') } where S' reachable from S.
+
+- Sprague-Grundy Theorem:
+  XOR of subgames' Grundy numbers; zero means losing position.
+
+
+8. Contest Tips
+
+- Read all problems first; solve easy ones last.
+
+- Match constraints to approach:
+  N <= 20 -> brute/bitmask, N <= 10^5 -> segment tree/DSU.
+
+- Precompute factorials, powers, modular inverses.
+
+- Optimize code and I/O if TLE occurs.
+
+- Check edge cases: 0, 1, max values, duplicates.
+\end{lstlisting}
+
+
+
+
+% \newpage
+% \section{Guide to Algorithmic Techniques (Quick Reference)}
+% \subsection{Core Paradigms}
+% \begin{itemize}
+%   \item \textbf{Greedy}
+%     \begin{itemize}
+%       \item Pick best local option $\rightarrow$ global solution.
+%       \item Needs correctness proof.
+%       \item Examples: Activity Selection, Huffman, Dijkstra.
+%     \end{itemize}
+
+%   \item \textbf{Divide and Conquer}
+%     \begin{itemize}
+%       \item Split $\rightarrow$ Solve recursively $\rightarrow$ Combine.
+%       \item Examples: Merge Sort, Closest Pair, Karatsuba.
+%     \end{itemize}
+
+%   \item \textbf{Dynamic Programming (DP)}
+%     \begin{itemize}
+%       \item Break into overlapping subproblems, store results.
+%       \item Types: Classic, Bitmask DP, Tree DP, Optimized (CHT, Knuth-Yao).
+%       \item Examples: Knapsack, LCS, LIS.
+%     \end{itemize}
+
+%   \item \textbf{Search + Pruning}
+%     \begin{itemize}
+%       \item Brute-force with backtracking and pruning.
+%       \item Meet-in-the-Middle, A* Search.
+%     \end{itemize}
+% \end{itemize}
+
+% \subsection{Graph Algorithms}
+% \begin{itemize}
+%   \item \textbf{BFS / DFS}: $O(V+E)$, path, cycle, components.
+%   \item \textbf{Shortest Paths}:
+%     \begin{itemize}
+%       \item Dijkstra: non-negative weights, $O(E \log V)$.
+%       \item Bellman-Ford: allows negatives, $O(VE)$.
+%       \item Floyd-Warshall: all pairs, $O(V^3)$.
+%     \end{itemize}
+%   \item \textbf{MST}:
+%     \begin{itemize}
+%       \item Kruskal (with DSU), Prim.
+%     \end{itemize}
+%   \item \textbf{SCC, 2-SAT}: Kosaraju/Tarjan, implication graph.
+% \end{itemize}
+
+% \subsection{Data Structures}
+% \begin{itemize}
+%   \item \textbf{BIT / Fenwick Tree}: $O(\log N)$ update/query.
+%   \item \textbf{Segment Tree}: range queries with/without lazy.
+%   \item \textbf{DSU}: near-constant time, used in Kruskal.
+%   \item \textbf{Trie}: efficient prefix storage.
+%   \item \textbf{Sparse Table}: static range queries in $O(1)$.
+%   \item \textbf{HLD / Centroid Decomposition}: for trees.
+% \end{itemize}
+
+% \subsection{String Algorithms}
+% \begin{itemize}
+%   \item \textbf{KMP}: pattern matching, $O(N+M)$.
+%   \item \textbf{Rolling Hash}: compare substrings in $O(1)$.
+%   \item \textbf{Suffix Array + LCP}: substring queries.
+%   \item \textbf{Aho-Corasick, Trie}: multiple pattern match.
+% \end{itemize}
+
+% \subsection{Math and Number Theory}
+% \begin{itemize}
+%   \item \textbf{Modular Arithmetic}: use inverse, exponentiation.
+%   \item \textbf{GCD + Extended Euclid}: for inverse, CRT.
+%   \item \textbf{Sieve of Eratosthenes}: prime generation.
+%   \item \textbf{Binomial Coefficients}: precompute factorials + inverses.
+%   \item \textbf{CRT, Totient, Euler's Theorem}: modular systems.
+%   \item \textbf{Miller-Rabin, Pollard's Rho}: primality & factorization.
+% \end{itemize}
+
+% \subsection{Geometry}
+% \begin{itemize}
+%   \item \textbf{Vectors, Cross Product}: orientation, area.
+%   \item \textbf{Convex Hull}: Graham Scan / Monotone Chain.
+%   \item \textbf{Line Sweep}: process geometry events.
+%   \item \textbf{Closest Pair}: divide and conquer.
+% \end{itemize}
+
+% \subsection{Game Theory}
+% \begin{itemize}
+%   \item \textbf{Nim Game}: XOR of heaps.
+%   \item \textbf{Grundy Number}: $g(S) = \text{MEX of reachable } g(S')$.
+%   \item \textbf{Sprague-Grundy}: XOR of sub-games $\rightarrow$ win if $\neq 0$.
+% \end{itemize}
+
+% \subsection{Contest Tips}
+% \begin{itemize}
+%   \item Read all problems first.
+%   \item Match constraints to strategy: $N \le 20$ → brute/bitmask, $N \le 10^5$ → segment tree.
+%   \item Precompute powers/factorials/modular inverses.
+%   \item If TLE: check loops, recursion, I/O speed.
+%   \item Debug edge cases: $0$, $1$, max input, duplicates.
+%   \item Write fast I/O wrappers. Save templates.
+% \end{itemize}
+
+
+
+
+
+
+
+
+
+\end{multicols}
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \begin{multicols}{3}
+% \section*{Technique}
+% \begin{lstlisting}
+% Recursion
+% Divide and conquer
+%     Finding interesting points in N log N
+% Algorithm analysis
+%     Master theorem
+%     Amortized time complexity
+% Greedy algorithm
+%     Scheduling
+%     Max contiguous subvector sum
+%     Invariants
+%     Huffman encoding
+% Graph theory
+%     Dynamic graphs (extra book-keeping)
+%     Breadth first search
+%     Depth first search
+%     * Normal trees / DFS trees
+%     Dijkstra’s algorithm
+%     MST: Prim’s algorithm
+%     Bellman-Ford
+%     Konig’s theorem and vertex cover
+%     Min-cost max flow
+%     Lovasz toggle
+%     Matrix tree theorem
+%     Maximal matching, general graphs
+%     Hopcroft-Karp
+%     Hall’s marriage theorem
+%     Graphical sequences
+%     Floyd-Warshall
+%     Euler cycles
+%     Flow networks
+%     * Augmenting paths
+%     * Edmonds-Karp
+%     Bipartite matching
+%     Min. path cover
+%     Topological sorting
+%     Strongly connected components
+%     2-SAT
+%     Cut vertices, cut-edges and biconnected components
+%     Edge coloring
+%     * Trees
+%     Vertex coloring
+%     * Bipartite graphs (=> trees)
+%     * 3^n (special case of set cover)
+%     Diameter and centroid
+%     K’th shortest path
+%     Shortest cycle
+% Dynamic programming
+%     Knapsack
+%     Coin change
+%     Longest common subsequence
+%     Longest increasing subsequence
+%     Number of paths in a dag
+%     Shortest path in a dag
+%     Dynprog over intervals
+%     Dynprog over subsets
+%     Dynprog over probabilities
+%     Dynprog over trees
+%     3^n set cover
+%     Divide and conquer
+%     Knuth optimization
+%     Convex hull optimizations
+%     RMQ (sparse table a.k.a 2^k-jumps)
+%     Bitonic cycle
+%     Log partitioning (loop over most restricted)
+% Combinatorics
+%     Computation of binomial coefficients
+%     Pigeon-hole principle
+%     Inclusion/exclusion
+%     Catalan number
+%     Pick’s theorem
+% Number theory
+%     Integer parts
+%     Divisibility
+%     Euclidean algorithm
+%     Modular arithmetic
+%     * Modular multiplication
+%     * Modular inverses
+%     * Modular exponentiation by squaring
+%     Chinese remainder theorem
+%     Fermat’s little theorem
+%     Euler’s theorem
+%     Phi function
+%     Frobenius number
+%     Quadratic reciprocity
+%     Pollard-Rho
+%     Miller-Rabin
+%     Hensel lifting
+%     Vieta root jumping
+% Game theory
+%     Combinatorial games
+%     Game trees
+%     Mini-max
+%     Nim
+%     Games on graphs
+%     Games on graphs with loops
+%     Grundy numbers
+%     Bipartite games without repetition
+%     General games without repetition
+%     Alpha-beta pruning
+% Probability theory
+% Optimization
+%     Binary search
+%     Ternary search
+%     Unimodality and convex functions
+%     Binary search on derivative
+% Numerical methods
+%     Numeric integration
+%     Newton’s method
+%     Root-finding with binary/ternary search
+%     Golden section search
+% Matrices
+%     Gaussian elimination
+%     Exponentiation by squaring
+% Sorting
+%     Radix sort
+% Geometry
+%     Coordinates and vectors
+%     * Cross product
+%     * Scalar product
+%     Convex hull
+%     Polygon cut
+%     Closest pair
+%     Coordinate-compression
+%     Quadtrees
+%     KD-trees
+%     All segment-segment intersection
+% Sweeping
+%     Discretization (convert to events and sweep)
+%     Angle sweeping
+%     Line sweeping
+%     Discrete second derivatives
+% Strings
+%     Longest common substring
+%     Palindrome subsequences
+%     Knuth-Morris-Pratt
+%     Tries
+%     Rolling polynomial hashes
+%     Suffix array
+%     Suffix tree
+%     Aho-Corasick
+%     Manacher’s algorithm
+%     Letter position lists
+% Combinatorial search
+%     Meet in the middle
+%     Brute-force with pruning
+%     Best-first (A*)
+%     Bidirectional search
+%     Iterative deepening DFS / A*
+% Data structures
+%     LCA (2^k-jumps in trees in general)
+%     Pull/push-technique on trees
+%     Heavy-light decomposition
+%     Centroid decomposition
+%     Lazy propagation
+%     Self-balancing trees
+%     Convex hull trick (wcipeg.com/wiki/Convex_hull_trick)
+%     Monotone queues / monotone stacks / sliding queues
+%     Sliding queue using 2 stacks    
+% \end{lstlisting}
+% \end{multicols}
+\begin{multicols}{3}
+\section*{C++ struct}
+\begin{lstlisting}
+#include <bits/stdc++.h>
+using namespace std;
+
+struct item {
+   int key;
+   int value;
+};
+
+// sort the struct according to key using merge sort
+bool compare(item a, item b) {
+   return a.key < b.key;
+}
+
+void merge(item arr[], int left, int mid, int right) {
+   int n1 = mid - left + 1;
+   int n2 = right - mid;
+
+   item* L = new item[n1];
+   item* R = new item[n2];
+
+   for (int i = 0; i < n1; i++)
+      L[i] = arr[left + i];
+   for (int j = 0; j < n2; j++)
+      R[j] = arr[mid + 1 + j];
+
+   int i = 0, j = 0, k = left;
+   while (i < n1 && j < n2) {
+      if (compare(L[i], R[j])) arr[k++] = L[i++];
+      else arr[k++] = R[j++];
+   }
+
+   while (i < n1) arr[k++] = L[i++];
+   while (j < n2) arr[k++] = R[j++];
+
+   delete[] L;
+   delete[] R;
+}
+
+void mergeSort(item arr[], int left, int right) {
+   if (left < right) {
+      int mid = left + (right - left) / 2;
+      mergeSort(arr, left, mid);
+      mergeSort(arr, mid + 1, right);
+      merge(arr, left, mid, right);
+   }
+}
+
+// perform binary search on the struct array according to key
+int binarySearch(item arr[], int n, int key) {
+   int left = 0, right = n - 1;
+   while (left <= right) {
+      int mid = left + (right - left) / 2;
+      if (arr[mid].key == key) return mid;
+      else if (arr[mid].key < key) left = mid + 1;
+      else right = mid - 1;
+   }
+   return -1; // key not found
+}
+
+int main() {
+   item arr[] = { {5, 10}, {3, 20}, {8, 15}, {1, 30} };
+   int n = sizeof(arr) / sizeof(arr[0]);
+
+   mergeSort(arr, 0, n - 1);
+
+   cout << "Sorted array according to key:\n";
+   for (int i = 0; i < n; i++)
+      cout << "{" << arr[i].key << ", " << arr[i].value << "} ";
+   cout << endl;
+
+   int key = 3;
+   int result = binarySearch(arr, n, key);
+   if (result != -1)
+      cout << "Element with key " << key
+           << " found at index " << result << endl;
+   else
+      cout << "Element with key " << key
+           << " not found in the array" << endl;
+}
+\end{lstlisting}
+\section*{I/O}
+\begin{lstlisting}
+# Standard input
+n = int(input())
+a, b = map(int, input().split())
+arr = list(map(int, input().split()))
+
+# Fast input
+import sys
+input = sys.stdin.readline
+
+# Output
+print("Result:", a+b)
+print(a, b, sep=",", end=" ")
+\end{lstlisting}
+
+\section*{Data Structures}
+\begin{lstlisting}
+# List
+arr = [1, 2, 3]
+arr.append(4)
+arr.pop()
+arr.sort(reverse=True)
+
+# Tuple
+t = (1, 2)
+
+# Set
+s = {1, 2, 3}
+s.add(4)
+
+# Dict (hashmap)
+d = {"a":1, "b":2}
+d["c"] = 3
+\end{lstlisting}
+
+\section*{Control Flow}
+\begin{lstlisting}
+for i in range(5):
+    print(i)
+
+while n > 0:
+    n -= 1
+
+if x > 0:
+    print("positive")
+elif x < 0:
+    print("negative")
+else:
+    print("zero")
+\end{lstlisting}
+
+\section*{Functions}
+\begin{lstlisting}
+def add(x, y=0):
+    return x + y
+
+print(add(3, 4))
+print(add(5))
+\end{lstlisting}
+
+\section*{Math Tools}
+\begin{lstlisting}
+import math
+
+g = math.gcd(24, 36)   # 12
+l = math.lcm(6, 8)     # 24
+sq = math.isqrt(25)    # 5
+mod = pow(2, 10, 1000) # 24
+\end{lstlisting}
+
+\section*{Sorting}
+\begin{lstlisting}
+arr = [(2,3), (1,5), (2,1)]
+arr.sort()  # by first, then second
+arr.sort(key=lambda x: (x[0], -x[1]))
+\end{lstlisting}
+
+\section*{Binary Search}
+\begin{lstlisting}
+import bisect
+
+arr = [1,2,4,4,5]
+pos = bisect.bisect_left(arr, 4) # 2
+pos2 = bisect.bisect_right(arr, 4) # 4
+\end{lstlisting}
+
+\section*{Combinatorics}
+\begin{lstlisting}
+import itertools
+
+for p in itertools.permutations([1,2,3]):
+    print(p)
+
+for c in itertools.combinations([1,2,3], 2):
+    print(c)
+\end{lstlisting}
+
+\section*{Helpers}
+\begin{lstlisting}
+# Multiple test cases
+for _ in range(int(input())):
+    n = int(input())
+    print(n*n)
+
+# List comprehension
+arr = [int(x) for x in input().split()]
+
+# Swap
+a, b = b, a
+
+# Infinity
+INF = float('inf')
+
+# Modulo constant
+MOD = 10**9 + 7
+\end{lstlisting}
+\end{multicols}
+\end{document}
