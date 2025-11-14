@@ -1,110 +1,304 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct item
-{
-   int key;
-   int value;
-};
+#define yes cout << "YES" << endl
+#define no cout << "NO" << endl
+#define endl "\n"
+#define vi(v) vector<long long> v
+#define ll long long
+#define Test  \
+    int n;    \
+    cin >> n; \
+    while (n--)
+#define always while (true)
 
-//sort the struct according to key using merge sort
-bool compare(item a, item b)
-{
-   return a.key < b.key;
-}
-void merge(item arr[], int left, int mid, int right)
-{
-   int n1 = mid - left + 1;
-   int n2 = right - mid;
+// decimal to binary
+// bitset<8>  b1(number);
 
-   item* L = new item[n1];
-   item* R = new item[n2];
+// convert hexadecimal to decimal
+// stoi(hexNumber, zero, base)
 
-   for (int i = 0; i < n1; i++)
-      L[i] = arr[left + i];
-   for (int j = 0; j < n2; j++)
-      R[j] = arr[mid + 1 + j];
+// convert decimal to hexadecimal and assing to a integer variable
+// stoi(decimalNumber, nullptr, 16);
 
-   int i = 0;
-   int j = 0;
-   int k = left;
+// bool isPrime(ll n)
+// {
+//     if(n==2) return true;
+//     if(n==1)return false;
+//     for(ll i=2;i*i<=n;i++)
+//         {
+//             if(n%i==0)
+//             {
+//                 return false;
+//             }
+//         }
+//     return true;
+// }
+// vector<int> primes;
 
-   while (i < n1 && j < n2)
-   {
-      if (compare(L[i], R[j]))
-      {
-         arr[k] = L[i];
-         i++;
-      }
-      else
-      {
-         arr[k] = R[j];
-         j++;
-      }
-      k++;
-   }
+// void gen_primes(int n) {
+//     vector<bool> prime(n+1, true);
+//     prime[0] = prime[1] = false;
+//     for (ll i = 2; i <= n; i++) {
+//         if (prime[i]) {
+//             primes.push_back(i);
+//             for (ll j = i * i; j <= n; j += i) {
+//                 prime[j] = false;
+//             }
+//         }
+//     }
+// }
 
-   while (i < n1)
-   {
-      arr[k] = L[i];
-      i++;
-      k++;
-   }
+// vector<ll> fact;
+// void precompute_factorials(int n) {
+//     fact.resize(n+1);
+//     fact[0] = 1;
+//     for (int i = 1; i <= n; i++) {
+//         fact[i] = (fact[i-1] * i) % mod;
+//     }
+// }
 
-   while (j < n2)
-   {
-      arr[k] = R[j];
-      j++;
-      k++;
-   }
+// ll modExp(ll base, ll exp, ll modulus) {
+//     base %= modulus;
+//     ll res = 1;
+//     while (exp > 0) {
+//         if (exp & 1)
+//             res = (res * base) % modulus;
+//         base = (base * base) % modulus;
+//         exp >>= 1;
+//     }
+//     return res;
+// }
 
-   delete[] L;
-   delete[] R;
-}
-void mergeSort(item arr[], int left, int right)
-{
-   if (left < right)
-   {
-      int mid = left + (right - left) / 2;
+// long long BigMod(long long base, long long exp, long long mod) {
+//     long long res = 1;
+//     base %= mod; // Ensure base is within modulo range
+//     while (exp > 0) {
+//         if (exp % 2 == 1) res = (res * base) % mod;
+//         base = (base * base) % mod;
+//         exp /= 2;
+//     }
+//     return res;
+// }
 
-      mergeSort(arr, left, mid);
-      mergeSort(arr, mid + 1, right);
+// string decimalToBase(long long n, int base) {
+//     // Handle invalid base
+//     if (base < 2 || base > 36)
+//         return "";
 
-      merge(arr, left, mid, right);
-   }
-}
-//perform binary search on the struct array according to key
-int binarySearch(item arr[], int n, int key)
-{
-   int left = 0;
-   int right = n - 1;   
-    while (left <= right)
-    {
-        int mid = left + (right - left) / 2;
-        if (arr[mid].key == key)
-            return mid;
-        else if (arr[mid].key < key)
-            left = mid + 1;
-        else
-            right = mid - 1;
-    }
-    return -1; // key not found
-}
+//     // Handle zero
+//     if (n == 0)
+//         return "0";
+
+//     string digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//     string result;
+//     bool isNegative = false;
+//     unsigned long long num;
+
+//     // Process negative numbers
+//     if (n < 0) {
+//         isNegative = true;
+//         if (n == LLONG_MIN) {
+//             num = static_cast<unsigned long long>(LLONG_MAX) + 1;
+//         } else {
+//             num = -n;
+//         }
+//     } else {
+//         num = n;
+//     }
+
+//     // Convert to target base
+//     while (num > 0) {
+//         unsigned remainder = num % base;
+//         num /= base;
+//         result = digits[remainder] + result;  // Prepend remainder digit
+//     }
+
+//     // Add negative sign if needed
+//     if (isNegative)
+//         result = '-' + result;
+
+//     return result;
+// }
+
+// // Efficient modular exponentiation using binary decomposition
+// long long bigmod(long long base, long long exponent, long long modulus) {
+//     if (modulus == 1) return 0;  // Anything mod 1 is 0
+//     long long result = 1;
+//     base %= modulus;  // Normalize base within modulus
+
+//     while (exponent > 0) {
+//         // Process set bit (LSB is 1)
+//         if (exponent & 1) {
+//             result = (result * base) % modulus;
+//         }
+//         // Prepare for next bit (square base)
+//         base = (base * base) % modulus;
+//         // Shift to next bit
+//         exponent >>= 1;
+//     }
+//     return result;
+// }
+
+// // Safe version for very large numbers (using __int128)
+// long long bigmod_safe(long long base, long long exponent, long long modulus) {
+//     if (modulus == 1) return 0;
+//     long long result = 1;
+//     base %= modulus;
+
+//     while (exponent > 0) {
+//         if (exponent & 1) {
+//             result = (static_cast<__int128>(result) * base) % modulus;
+//         }
+//         base = (static_cast<__int128>(base) * base) % modulus;
+//         exponent >>= 1;
+//     }
+//     return result;
+// }
+
+// // Helper function to compute GCD using Euclidean algorithm
+// long long gcd(long long a, long long b) {
+//     // Make sure we work with positive numbers
+//     a = std::abs(a);
+//     b = std::abs(b);
+//     while (b != 0) {
+//         long long temp = b;
+//         b = a % b;
+//         a = temp;
+//     }
+//     return a;
+// }
+
+// // Simplifies fraction to lowest terms
+// pair<long long, long long> simplifyFraction(long long numerator, long long denominator) {
+//     // Handle division by zero
+//     if (denominator == 0) {
+//         throw std::invalid_argument("Denominator cannot be zero");
+//     }
+
+//     // Handle zero numerator
+//     if (numerator == 0) {
+//         return {0, 1}; // 0/n = 0/1
+//     }
+
+//     // Compute GCD of absolute values
+//     long long divisor = gcd(numerator, denominator);
+
+//     // Simplify by dividing by GCD
+//     long long simple_num = numerator / divisor;
+//     long long simple_den = denominator / divisor;
+
+//     // Ensure denominator is positive
+//     if (simple_den < 0) {
+//         simple_num = -simple_num;
+//         simple_den = -simple_den;
+//     }
+
+//     return {simple_num, simple_den};
+// }
+// auto [num1, den1] = simplifyFraction(15, 25);
+
+// ll mulmod(ll a, ll b, ll mod) {
+//     ll res = 0;
+//     a %= mod;
+//     while (b) {
+//         if (b & 1) res = (res + a) % mod;
+//         a = (a * 2) % mod;
+//         b >>= 1;
+//     }
+//     return res;
+// }
+
+// ll powmod(ll base, ll exp, ll mod) {
+//     ll res = 1;
+//     base %= mod;
+//     while (exp) {
+//         if (exp & 1) res = mulmod(res, base, mod);
+//         base = mulmod(base, base, mod);
+//         exp >>= 1;
+//     }
+//     return res;
+// }
+
+// bool miller_rabin(ll n, ll a) {
+//     if (n % a == 0) return false;
+//     ll d = n - 1;
+//     while (d % 2 == 0) d >>= 1;
+//     ll x = powmod(a, d, n);
+//     if (x == 1 || x == n-1) return true;
+//     while (d != n - 1) {
+//         x = mulmod(x, x, n);
+//         d <<= 1;
+//         if (x == 1) return false;
+//         if (x == n - 1) return true;
+//     }
+//     return false;
+// }
+
+// bool isPrime(ll n) {
+//     if (n <= 1) return false;
+//     if (n <= 3) return true;
+//     if (n % 2 == 0) return false;
+
+//     vector<ll> bases = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
+//     for (ll a : bases) {
+//         if (n == a) return true;
+//         if (!miller_rabin(n, a)) return false;
+//     }
+//     return true;
+// }
+
 int main()
 {
-   item arr[] = { {5, 10}, {3, 20}, {8, 15}, {1, 30} };
-   int n = sizeof(arr) / sizeof(arr[0]);
+    cin.tie(0);
+    ios_base::sync_with_stdio(0);
+    ll len;
+    cin >> len;
+    vector<ll> v(len);
 
-   mergeSort(arr, 0, n - 1);
+    ll sum = 0, ans = INT_MAX;
+    for (int x = 0; x < len; x++)
+    {
+        cin >> v[x];
+        sum += v[x];
+    }
 
-   cout << "Sorted array according to key:\n";
-   for (int i = 0; i < n; i++)
-      cout << "{" << arr[i].key << ", " << arr[i].value << "} ";
-   cout << endl;
-    int key = 3;
-    int result = binarySearch(arr, n, key);
-    if (result != -1)
-        cout << "Element with key " << key << " found at index " << result << endl;
-    else
-        cout << "Element with key " << key << " not found in the array" << endl;
+    bool dp[len + 1][sum + 1];
+    dp[0][0] = true;
+    for (int x = 1; x <= sum; x++)
+        dp[0][x] = false;
+
+    for (int x = 1; x <= len; x++)
+    {
+        for (int y = 0; y <= sum; y++)
+        {
+            if (v[x - 1] <= y)
+            {
+                dp[x][y] = dp[x - 1][y - v[x - 1]] || dp[x - 1][y];
+            }
+            else
+                dp[x][y] = dp[x - 1][y];
+        }
+    }
+
+    vector<ll> get;
+    for (int x = 0; x <= len; x++)
+    {
+        for (int y = 0; y <= sum; y++)
+        {
+            if (dp[x][y])
+            {
+                get.push_back(y);
+            }
+        }
+    }
+
+    for (auto val : get)
+    {
+        ll s1 = val;
+        ll s2 = sum - s1;
+        ans = min(ans, abs(s1 - s2));
+    }
+
+    cout << ans << endl;
 }

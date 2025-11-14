@@ -1,0 +1,1 @@
+{"name":"Local: tetration","url":"/home/samim01/Code/CP/tetration.cpp","tests":[{"id":1760113898044,"input":"1000000000 1000000000\n\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/samim01/Code/CP/tetration.cpp","group":"local","local":true}
